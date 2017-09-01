@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130627093146) do
+ActiveRecord::Schema.define(:version => 20170901200146) do
 
   create_table "articles", :force => true do |t|
     t.string   "name",                                                          :null => false
@@ -51,6 +51,11 @@ ActiveRecord::Schema.define(:version => 20130627093146) do
     t.string   "bnn_host"
     t.string   "bnn_user"
     t.string   "bnn_password"
+    t.boolean  "mail_sync"
+    t.string   "mail_from"
+    t.string   "mail_subject"
+    t.string   "mail_type"
+    t.string   "salt",                             :null => false
   end
 
   add_index "suppliers", ["name"], :name => "index_suppliers_on_name", :unique => true

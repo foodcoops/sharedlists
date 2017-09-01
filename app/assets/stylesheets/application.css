@@ -2,7 +2,7 @@
  = require scaffold
 */
 
-.simple_form label {
+.simple_form label:first-child {
   width: 160px;
   text-align: right;
   vertical-align: top;
@@ -11,6 +11,14 @@
   margin-bottom: 10px;
   padding-top: 2.5px;
 }
-.simple_form input {
+.simple_form input, .simple_form select {
   margin-bottom: 10px;
+}
+.simple_form .field_with_errors label {
+  color: #c00;
+  font-weight: bold;
+}
+.simple_form .error {
+  margin-left: 10px;
+  color: #c00;
 }

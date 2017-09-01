@@ -26,6 +26,8 @@ en:
         delivery_days: Delivery days
         email: Email
         fax: Fax
+        mail_sync: Update articles by email
+        mail_type: File format
         min_order_quantity: Minimum order quantity
         min_order_quantity_short: Min. quantity
         name: Name

@@ -29,6 +29,7 @@ GEM
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
     arel (3.0.3)
+    base32 (0.3.2)
     bcrypt (3.1.11)
     bcrypt-ruby (3.1.5)
       bcrypt (>= 3.1.3)
@@ -44,6 +45,7 @@ GEM
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.18)
+    gserver (0.0.1)
     haml (5.0.3)
       temple (>= 0.8.0)
       tilt
@@ -58,6 +60,7 @@ GEM
     mail (2.5.5)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    midi-smtp-server (2.1.2)
     mime-types (1.25.1)
     mini_portile2 (2.3.0)
     multi_json (1.12.2)
@@ -145,10 +148,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  base32
   bcrypt-ruby
   coffee-rails
+  gserver
   haml
   jquery-rails
+  midi-smtp-server
   mysql2 (~> 0.3.1)
   rails (~> 3.2.22)
   roo
