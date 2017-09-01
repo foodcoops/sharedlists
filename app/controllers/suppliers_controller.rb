@@ -55,9 +55,16 @@ class SuppliersController < ApplicationController
   # PUT /suppliers/1.xml
   def update
     @supplier = Supplier.find(params[:id])
+    attrs = params[:supplier]
 
     respond_to do |format|
-      if @supplier.update_attributes(params[:supplier])
+      # @todo fix by generating proper hidden input in html
+      attrs[:bnn_sync] ||= false
+      attrs[:mail_sync] ||= false
+      # don't set password to blank on saving
+      attrs = attrs.reject {|k,v| k == 'bnn_password' } if attrs[:bnn_password].blank?
+
+      if @supplier.update_attributes(attrs)
         flash[:notice] = 'Supplier was successfully updated.'
         format.html { redirect_to supplier_url(@supplier) }
         format.xml  { head :ok }

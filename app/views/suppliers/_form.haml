@@ -1,7 +1,7 @@
 = simple_form_for @supplier do |f|
-  = f.input :name
-  = f.input :address
-  = f.input :phone
+  = f.input :name, required: true
+  = f.input :address, required: true
+  = f.input :phone, required: true
   = f.input :phone2
   = f.input :fax
   = f.input :email
@@ -13,10 +13,24 @@
   /= f.input :article_info_url
 
   = f.input :bnn_sync
-  %div#bnn_details{style: @supplier.bnn_sync ? '' : 'display: none'}
+  %div#bnn_details{style: ('display: none' unless @supplier.bnn_sync?)}
     = f.input :bnn_host
     = f.input :bnn_user
     = f.input :bnn_password
+
+  = f.input :mail_sync
+  %div#mail_details{style: ('display: none' unless @supplier.mail_sync?)}
+    .input
+      %label Send to
+      - if !ENV["MAILER_DOMAIN"].present?
+        %i (please set <tt>MAILER_DOMAIN</tt> to see address)
+      - elsif @supplier.articles_mail_address.present?
+        %tt= @supplier.articles_mail_address
+      - else
+        %i (save supplier to see address)
+    = f.input :mail_type, collection: ArticleImport.file_formats.map {|k,o| [o::NAME, k] }
+    = f.input :mail_from
+    = f.input :mail_subject
 
   .form-actions
     = f.submit class: 'btn'
@@ -27,4 +41,7 @@
     :javascript
       $(document).on('change', '#supplier_bnn_sync', function() {
         $('#bnn_details').toggle(this.checked);
+      });
+      $(document).on('change', '#supplier_mail_sync', function() {
+        $('#mail_details').toggle(this.checked);
       });

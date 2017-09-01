@@ -10,6 +10,10 @@ gem 'whenever', '~> 0.9', require: false
 gem 'roo'
 gem 'roo-xls'
 
+gem 'base32'
+gem 'gserver', require: false
+gem 'midi-smtp-server', require: false
+
 gem 'test-unit' # FIXME: This is needed in production to run the console. Why?
 gem 'simple_form'
 

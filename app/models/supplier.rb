@@ -6,13 +6,41 @@ class Supplier < ActiveRecord::Base
   # save lists in an array in database
   serialize :lists
 
-  validates_presence_of :name, :address, :phone
-  validates_presence_of :bnn_host, :bnn_user, :bnn_password, :bnn_sync, :if => Proc.new { |s| s.bnn_sync }
+  EMAIL_RE = /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i.freeze
 
-  scope :bnn_sync, :conditions => {:bnn_sync => true}
+  validates :name, :address, :phone, presence: true
+  validates :bnn_host, :bnn_user, :bnn_password, :bnn_sync, presence: true, if: :bnn_sync?
+  validates :mail_from, presence: true, format: { with: EMAIL_RE }, if: :mail_sync?
+  validates :mail_type, inclusion: { in: ArticleImport.file_formats.keys }, presence: true, if: :mail_sync?
+
+  scope :bnn_sync, ->{ where(bnn_sync: true) }
+  scope :mail_sync, ->{ where(mail_sync: true) }
+
+  before_create :create_salt
 
   def bnn_path
-    File.join(Rails.root, "supplier_assets/bnn_files/", id.to_s)
+    Rails.root.join("supplier_assets", "bnn_files", id.to_s)
+  end
+
+  def mail_path
+    Rails.root.join("supplier_assets", "mail_files", id.to_s)
+  end
+
+  # mail hash checked on receiving articles update mail
+  def articles_mail_hash
+    digest = Digest::SHA1.new
+    digest.update self.id.to_s
+    digest.update ":"
+    digest.update salt
+    digest.update ":mail:articles"
+    Base32.encode(digest.digest[1..10])
+  end
+
+  def articles_mail_address
+    return unless salt.present?
+    s = "#{ENV["MAILER_PREFIX"]}#{id}.#{articles_mail_hash}@#{ENV["MAILER_DOMAIN"]}"
+    s = ENV["MAILER_PREFIX"] + s if ENV["MAILER_PREFIX]"].present?
+    s
   end
 
   def sync_bnn_files
@@ -107,6 +135,12 @@ class Supplier < ActiveRecord::Base
 
   def articles_updated_at
     articles.order('articles.updated_on DESC').first.try(:updated_on)
+  end
+
+  private
+
+  def create_salt
+    self.salt = [Array.new(6){rand(256).chr}.join].pack("m").chomp
   end
 end
 
