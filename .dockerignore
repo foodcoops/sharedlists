@@ -1,11 +1,38 @@
 .git
-.idea
+.gitignore
+
+.bundle
+.rake_tasks*
+db/*.sqlite3
 log
+node_modules
+tmp/*
 public/assets
 public/system
 public/uploads
-tmp/*
+supplier_assets/**
 vendor/bundle
+
+# no configuration
+config/*.yml
+
+# IDEs, Developer tools
+.idea
+.loadpath
+.project
+.sass-cache
+.rbenv-version
+.get-dump.yml
+.bash_history
+nbproject/
+.*.sw?
+*~
+
 coverage
 tags
-supplier_assets/**
+
+# Capistrano etc.
+Capfile
+config/deploy
+config/deploy.rb
+Gemfile.capistrano*

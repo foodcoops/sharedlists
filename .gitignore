@@ -1,21 +1,35 @@
 .bundle
+.rake_tasks*
 db/*.sqlite3
-log/*.log
-tmp/
+log
+node_modules
+tmp
+public/assets
+public/system
+public/uploads
 supplier_assets/**
 vendor/bundle
 
-# Do not store config in repo
+# no configuration
 config/*.yml
-config/initializers/secret_token.rb
 
 # IDEs, Developer tools
 .idea
+.loadpath
+.project
+.sass-cache
 .rbenv-version
 .get-dump.yml
 .bash_history
+nbproject/
+.*.sw?
+*~
 
-# Capistrano etc
+coverage
+tags
+
+# Capistrano etc.
 Capfile
+config/deploy
 config/deploy.rb
 Gemfile.capistrano*

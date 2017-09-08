@@ -24,12 +24,18 @@ SharedLists::Application.configure do
   # Use a different logger for distributed setups
   # config.logger = SyslogLogger.new
 
+  # https://github.com/heroku/rails_12factor/issues/25#issuecomment-231103483
+  if ENV['RAILS_LOG_TO_STDOUT'].present?
+    STDOUT.sync      = true
+    config.logger    = Logger.new(STDOUT)
+  end
+
   # Use a different cache store in production
   # config.cache_store = :mem_cache_store
 
   # Disable Rails's static asset server
   # In production, Apache or nginx will already do this
-  config.serve_static_assets = false
+  config.serve_static_assets = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   # Enable serving of images, stylesheets, and javascripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
@@ -63,5 +69,5 @@ SharedLists::Application.configure do
   # config.assets.precompile += %w( search.js )
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  config.force_ssl = ENV["RAILS_FORCE_SSL"] != "false"
 end
