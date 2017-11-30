@@ -45,9 +45,9 @@ module ArticleImport::Bnn
 
   # parses a bnn-file
   def self.parse(file, **opts)
-    file.set_encoding(opts[:encoding] || OPTIONS[:encoding])
+    encoding = opts[:encoding] || OPTIONS[:encoding]
     col_sep = opts[:col_sep] || OPTIONS[:col_sep]
-    CSV.new(file, {col_sep: col_sep, headers: true}).each do |row|
+    CSV.foreach(file, {col_sep: col_sep, encoding: encoding, headers: true}) do |row|
       # check if the line is empty
       unless row[0] == "" || row[0].nil?
         article = {

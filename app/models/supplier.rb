@@ -52,7 +52,7 @@ class Supplier < ActiveRecord::Base
 
       article = articles.find_by_number(parsed_article[:number])
       # create new article
-      if status.nil? and article.nil?
+      if status.nil? && article.nil?
         new_article = articles.build(parsed_article)
         if new_article.valid? && new_article.save
           new_counter += 1
@@ -62,16 +62,16 @@ class Supplier < ActiveRecord::Base
         end
 
       # update existing article
-      elsif status.nil? and article
+      elsif status.nil? && article
         updated_counter += 1 if article.update_attributes(parsed_article)
         listed << article.id
 
       # delete outlisted article
-      elsif status == :outlisted and article
+      elsif status == :outlisted && article
         article.destroy && outlisted_counter += 1
 
       # remember special info for article; store data to allow article after its special
-      elsif status == :special
+      elsif status == :special && article
         specials << article
 
       # mention parsing problems
