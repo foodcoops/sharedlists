@@ -65,7 +65,7 @@ GEM
     mini_portile2 (2.3.0)
     multi_json (1.12.2)
     mysql2 (0.3.21)
-    nokogiri (1.8.1)
+    nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     polyglot (0.3.5)
     power_assert (1.1.0)
@@ -168,4 +168,4 @@ DEPENDENCIES
   will_paginate (~> 3.0)
 
 BUNDLED WITH
-   1.11.2
+   1.15.4
