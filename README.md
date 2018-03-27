@@ -6,6 +6,7 @@
 Sharedlists is a simple rails driven database for managing multiple product lists of various suppliers.
 
 This app is used in conjunction with [foodsoft](https://github.com/foodcoops/foodsoft).
+Recommended [Ruby](http://ruby-lang.org/) version is 2.2 (note that 2.4 does not work).
 
 
 ## Development
