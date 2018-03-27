@@ -38,9 +38,7 @@ class Supplier < ActiveRecord::Base
 
   def articles_mail_address
     return unless salt.present?
-    s = "#{ENV["MAILER_PREFIX"]}#{id}.#{articles_mail_hash}@#{ENV["MAILER_DOMAIN"]}"
-    s = ENV["MAILER_PREFIX"] + s if ENV["MAILER_PREFIX]"].present?
-    s
+    "#{ENV["MAILER_PREFIX"]}#{id}.#{articles_mail_hash}@#{ENV["MAILER_DOMAIN"]}"
   end
 
   def sync_bnn_files
