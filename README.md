@@ -1,12 +1,11 @@
 # Sharedlists
 
-[![Dependency Status](https://gemnasium.com/badges/github.com/foodcoops/sharedlists.svg)](https://gemnasium.com/github.com/foodcoops/sharedlists)
 [![Docker Status](https://img.shields.io/docker/build/foodcoops/sharedlists.svg)](https://hub.docker.com/r/foodcoops/sharedlists)
 
 Sharedlists is a simple rails driven database for managing multiple product lists of various suppliers.
 
 This app is used in conjunction with [foodsoft](https://github.com/foodcoops/foodsoft).
-Recommended [Ruby](http://ruby-lang.org/) version is 2.2 (note that 2.4 does not work).
+Recommended [Ruby](http://ruby-lang.org/) version is 2.3 (note that 2.4 does not work).
 
 
 ## Development
@@ -15,8 +14,8 @@ Recommended [Ruby](http://ruby-lang.org/) version is 2.2 (note that 2.4 does not
 
 Copy `config/database.yml.SAMPLE` to `config/database.yml` and
 
-    docker-compose run app bundle
-    docker-compose run app rake db:setup
+    docker-compose run --rm app bundle
+    docker-compose run --rm app rake db:setup
 
 ### Run
 
@@ -54,6 +53,17 @@ To run cronjobs, start another instance:
 
 If you want to process incoming mails, add another instance like the previous,
 substituting `mail` for `cron`.
+
+To put this all together, you may want to wrap this in docker-compose. See
+the [foodcoops.net setup](https://github.com/foodcoops/foodcoops.net/) for a real-world example.
+
+
+## Connecting Foodsoft
+
+To use shared suppliers from this sharedlists instance from within Foodsoft, you need
+to configure the [`shared_lists` option](https://github.com/foodcoops/foodsoft/blob/31689dfb75d203ab39405c313817e8c40e2cab36/config/app_config.yml.SAMPLE#L154)
+in its `config/app_config.yml`. Don't forget to grant the Foodsoft database user
+`SELECT` access on sharedlists' `suppliers` and `articles` tables.
 
 
 ## Updating articles
