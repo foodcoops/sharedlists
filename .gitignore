@@ -3,7 +3,8 @@
 db/*.sqlite3
 log
 node_modules
-tmp
+tmp/*
+!tmp/.keep
 public/assets
 public/system
 public/uploads
