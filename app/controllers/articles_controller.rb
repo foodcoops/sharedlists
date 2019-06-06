@@ -9,7 +9,9 @@ class ArticlesController < ApplicationController
   def index
     if params[:filter]
       @filter = params[:filter]
-      @articles = @supplier.articles.paginate :conditions => ['name LIKE ?', "%#{@filter}%"], :page => params[:page]
+      @articles = @supplier.articles
+      @articles = @articles.where('name LIKE ?', "%#{@filter}%") unless @filter.nil?
+      @articles = @articles.page(params[:page])
     elsif params[:order]
       case params[:order]
       when 'updated_on'
