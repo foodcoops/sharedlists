@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20190611173201) do
+ActiveRecord::Schema.define(:version => 20190612080735) do
 
   create_table "articles", :force => true do |t|
     t.string   "name",                                                          :null => false
@@ -36,9 +36,9 @@ ActiveRecord::Schema.define(:version => 20190611173201) do
   add_index "articles", ["number", "supplier_id"], :name => "index_articles_on_number_and_supplier_id", :unique => true
 
   create_table "suppliers", :force => true do |t|
-    t.string   "name",                                      :null => false
-    t.string   "address",                                   :null => false
-    t.string   "phone",                                     :null => false
+    t.string   "name",                                    :null => false
+    t.string   "address",                                 :null => false
+    t.string   "phone",                                   :null => false
     t.string   "phone2"
     t.string   "fax"
     t.string   "email"
@@ -51,13 +51,13 @@ ActiveRecord::Schema.define(:version => 20190611173201) do
     t.string   "ftp_host"
     t.string   "ftp_user"
     t.string   "ftp_password"
-    t.integer  "ftp_type",      :default => 0,              :null => false
-    t.string   "ftp_regexp",    :default => "^(\\.\\/)?PL"
+    t.string   "ftp_type",      :default => "bnn"
+    t.string   "ftp_regexp",    :default => "^([.]/)?PL"
     t.boolean  "mail_sync"
     t.string   "mail_from"
     t.string   "mail_subject"
     t.string   "mail_type"
-    t.string   "salt",                                      :null => false
+    t.string   "salt",                                    :null => false
   end
 
   add_index "suppliers", ["name"], :name => "index_suppliers_on_name", :unique => true

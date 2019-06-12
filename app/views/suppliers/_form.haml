@@ -18,7 +18,7 @@
     = f.input :ftp_user
     = f.input :ftp_password
     = f.input :ftp_type, collection: Supplier::FTP_TYPES, include_blank: false
-    = f.input :ftp_regexp
+    = f.input :ftp_regexp, hint: t('.ftp_regexp_hint')
 
   = f.input :mail_sync
   %div#mail_details{style: ('display: none' unless @supplier.mail_sync?)}

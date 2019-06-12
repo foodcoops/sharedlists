@@ -6,14 +6,12 @@ class Supplier < ActiveRecord::Base
   # save lists in an array in database
   serialize :lists
 
-  # @rails4: enum ftp_type: {bnn: 0, foodsoft: 1}
-  FTP_TYPES = {bnn: 0, foodsoft: 1}
-
+  FTP_TYPES = ['bnn', 'foodsoft'].freeze
   EMAIL_RE = /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i.freeze
 
   validates :name, :address, :phone, presence: true
   validates :ftp_host, :ftp_user, :ftp_password, :ftp_sync, presence: true, if: :ftp_sync?
-  validates :ftp_type, presence: true, inclusion: {in: FTP_TYPES.values}, if: :ftp_sync?
+  validates :ftp_type, presence: true, inclusion: { in: FTP_TYPES }, if: :ftp_sync?
   validates :mail_from, presence: true, format: { with: EMAIL_RE }, if: :mail_sync?
   validates :mail_type, inclusion: { in: ArticleImport.file_formats.keys }, presence: true, if: :mail_sync?
 
@@ -29,10 +27,6 @@ class Supplier < ActiveRecord::Base
 
   def mail_path
     Rails.root.join("supplier_assets", "mail_files", id.to_s)
-  end
-
-  def ftp_type_string
-    FTP_TYPES.key(ftp_type).to_s
   end
 
   # mail hash checked on receiving articles update mail
@@ -59,7 +53,7 @@ class Supplier < ActiveRecord::Base
       new_files.each do |file|
         logger.debug "parse #{file}..."
         outlisted_counter, new_counter, updated_counter, invalid_articles =
-            update_articles_from_file(File.join(ftp_path, file), type: ftp_type_string)
+            update_articles_from_file(File.join(ftp_path, file), type: ftp_type)
         logger.info "#{file} successfully parsed: #{new_counter} new, #{updated_counter} updated, #{outlisted_counter} outlisted, #{invalid_articles.size} invalid"
       end
 

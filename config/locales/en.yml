@@ -50,3 +50,6 @@ en:
       article: Article
       supplier: Supplier
       user: User
+  suppliers:
+    form:
+      ftp_regexp_hint: "Must fit to file format. Example: \\A(?:[.]/)?PL.{0,6}[.]BNN\\z for bnn, \\A(?:[.]/)?.+[.]csv\\z for foodsoft."
