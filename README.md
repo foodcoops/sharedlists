@@ -71,14 +71,28 @@ in its `config/app_config.yml`. Don't forget to grant the Foodsoft database user
 Articles in the database can be updated regularly. There are currently two options to
 do this automatically.
 
-### BNN
+### FTP
 
-In Germany, there is an association for organic food, [BNN](http://n-bnn.de/), that has
-a standard for distributing data over FTP. A [cron](https://en.wikipedia.org/wiki/Cron)job
-needs to setup using [`whenever`](https://github.com/javan/whenever).
+Some suppliers distribute article lists via FTP. You can use the rake task
+called `sync_ftp` in order to download and parse those article lists. First, you
+need to enable FTP synchronization for a certain supplier by activating the
+checkbox _Synchronize FTP files_. Fill out all corresponding form fields. In
+particular, make sure to adjust the *file filter (regular expression)* such that
+it matches the files of interest; non-matching files are ignored. The two
+supported file formats and sensible choices for a corresponding *file filter*
+are shown in the following table.
 
-To enable this for a certain supplier, tick the checkbox _Synchronize BNN files_ and enter
-the FTP credentials.
+| file format                 | example file filter           |
+|-----------------------------|-------------------------------|
+| [BNN3][bnn3-format]         | `\A(?:[.]/)?PL.{0,6}[.]BNN\z` |
+| [foodsoft][foodsoft-format] | `\A(?:[.]/)?.+[.]csv\z`       |
+
+[bnn3-format]: https://github.com/foodcoops/foodsoft/wiki/File-formats-for-article-lists#user-content-format-bnn3
+[foodsoft-format]: https://github.com/foodcoops/foodsoft/wiki/File-formats-for-article-lists#user-content-format-foodsoft
+
+Once you have the `sync_ftp` task working, you may wish to setup a
+[cron](https://en.wikipedia.org/wiki/Cron)job using
+[`whenever`](https://github.com/javan/whenever).
 
 ### Email
 
