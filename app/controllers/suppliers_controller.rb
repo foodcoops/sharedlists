@@ -59,10 +59,10 @@ class SuppliersController < ApplicationController
 
     respond_to do |format|
       # @todo fix by generating proper hidden input in html
-      attrs[:bnn_sync] ||= false
+      attrs[:ftp_sync] ||= false
       attrs[:mail_sync] ||= false
       # don't set password to blank on saving
-      attrs = attrs.reject {|k,v| k == 'bnn_password' } if attrs[:bnn_password].blank?
+      attrs = attrs.reject {|k,v| k == 'ftp_password' } if attrs[:ftp_password].blank?
 
       if @supplier.update_attributes(attrs)
         flash[:notice] = 'Supplier was successfully updated.'

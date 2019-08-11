@@ -19,7 +19,7 @@
 
 # Learn more: http://github.com/javan/whenever
 
-# Get newest articles from suppliers via bnn sync, every day at 11:14, 16:14 and 20:14
+# Get newest articles from suppliers via ftp sync, every day at 11:14, 16:14 and 20:14
 every '14 11,16,20 * * *' do
-  rake 'sync_bnn_files'
+  rake 'sync_ftp_files'
 end
