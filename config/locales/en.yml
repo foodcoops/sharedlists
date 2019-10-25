@@ -19,10 +19,12 @@ en:
         units: Units
       supplier:
         address: Address
-        bnn_host: BNN host
-        bnn_user: BNN user
-        bnn_password: BNN password
-        bnn_sync: Synchronise BNN files
+        ftp_host: FTP host
+        ftp_user: FTP user
+        ftp_password: FTP password
+        ftp_sync: Synchronise files via FTP
+        ftp_type: File format
+        ftp_regexp: File filter (regexp)
         delivery_days: Delivery days
         email: Email
         fax: Fax
@@ -48,3 +50,6 @@ en:
       article: Article
       supplier: Supplier
       user: User
+  suppliers:
+    form:
+      ftp_regexp_hint: "Must fit to file format. Example: \\A(?:[.]/)?PL.{0,6}[.]BNN\\z for bnn, \\A(?:[.]/)?.+[.]csv\\z for foodsoft."

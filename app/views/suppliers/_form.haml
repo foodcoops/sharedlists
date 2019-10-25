@@ -12,11 +12,13 @@
   /= f.input :min_order_quantity
   /= f.input :article_info_url
 
-  = f.input :bnn_sync
-  %div#bnn_details{style: ('display: none' unless @supplier.bnn_sync?)}
-    = f.input :bnn_host
-    = f.input :bnn_user
-    = f.input :bnn_password
+  = f.input :ftp_sync
+  %div#ftp_details{style: ('display: none' unless @supplier.ftp_sync?)}
+    = f.input :ftp_host
+    = f.input :ftp_user
+    = f.input :ftp_password
+    = f.input :ftp_type, collection: Supplier::FTP_TYPES, include_blank: false
+    = f.input :ftp_regexp, hint: t('.ftp_regexp_hint')
 
   = f.input :mail_sync
   %div#mail_details{style: ('display: none' unless @supplier.mail_sync?)}
@@ -39,8 +41,8 @@
 
   - content_for :javascript do
     :javascript
-      $(document).on('change', '#supplier_bnn_sync', function() {
-        $('#bnn_details').toggle(this.checked);
+      $(document).on('change', '#supplier_ftp_sync', function() {
+        $('#ftp_details').toggle(this.checked);
       });
       $(document).on('change', '#supplier_mail_sync', function() {
         $('#mail_details').toggle(this.checked);
