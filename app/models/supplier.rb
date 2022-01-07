@@ -1,4 +1,4 @@
-class Supplier < ActiveRecord::Base
+class Supplier < ApplicationRecord
   has_many :articles, :dependent => :destroy
   has_many :user_accesses, :dependent => :destroy
   has_many :users, :through => :user_accesses
@@ -7,7 +7,7 @@ class Supplier < ActiveRecord::Base
   serialize :lists
 
   FTP_TYPES = ['bnn', 'foodsoft'].freeze
-  EMAIL_RE = /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i.freeze
+  EMAIL_RE = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i.freeze
 
   validates :name, :address, :phone, presence: true
   validates :ftp_host, :ftp_user, :ftp_password, :ftp_sync, presence: true, if: :ftp_sync?
@@ -92,7 +92,7 @@ class Supplier < ActiveRecord::Base
 
       # update existing article
       elsif status.nil? && article
-        updated_counter += 1 if article.update_attributes(parsed_article)
+        updated_counter += 1 if article.update(parsed_article)
         listed << article.id
 
       # delete outlisted article

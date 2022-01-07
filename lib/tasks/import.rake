@@ -1,6 +1,6 @@
 # encoding:utf-8
 desc "Import articles from file (options: FILE=f, TYPE=t, SUPPLIER=id_or_name)"
-task 'import:articles' => :environment do |t, args|
+task 'import:articles': :environment do |t, args|
   filename = ENV['FILE']
   filename.present? or raise 'Please set FILE to the file to import'
 

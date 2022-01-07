@@ -1,8 +1,6 @@
 # This file is used by Rack-based servers to start the application.
 
-require ::File.expand_path('../config/environment',  __FILE__)
+require_relative "config/environment"
 
-# https://gist.github.com/ebeigarts/5450422
-map ENV['RAILS_RELATIVE_URL_ROOT'] || '/' do
-  run SharedLists::Application
-end
+run Rails.application
+Rails.application.load_server

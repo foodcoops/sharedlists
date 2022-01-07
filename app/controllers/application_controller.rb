@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  before_filter :login_required!
+  before_action :login_required!
 
   helper_method :current_user
 
@@ -19,6 +19,14 @@ class ApplicationController < ActionController::Base
     if current_user.nil?
       flash[:error] = "Login required"
       redirect_to log_in_url
+    end
+  end
+
+  def admin_required!
+    user = current_user
+    if user.nil? || !user.admin?
+      flash[:error] = "Not authorized!"
+      redirect_to root_url
     end
   end
 

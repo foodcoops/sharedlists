@@ -1,4 +1,4 @@
-class AddCategoryToArticle < ActiveRecord::Migration
+class AddCategoryToArticle < ActiveRecord::Migration[4.2]
   def self.up
     add_column :articles, :category, :string
   end

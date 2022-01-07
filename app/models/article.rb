@@ -22,7 +22,7 @@
 #  category       :string(255)
 #
 
-class Article < ActiveRecord::Base
+class Article < ApplicationRecord
   belongs_to :supplier
   
   validates_numericality_of :price, :tax, :deposit, :unit_quantity

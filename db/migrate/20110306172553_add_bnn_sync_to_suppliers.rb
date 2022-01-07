@@ -1,4 +1,4 @@
-class AddBnnSyncToSuppliers < ActiveRecord::Migration
+class AddBnnSyncToSuppliers < ActiveRecord::Migration[4.2]
   def self.up
     add_column :suppliers, :bnn_sync, :boolean, :default => false
     add_column :suppliers, :bnn_host, :string

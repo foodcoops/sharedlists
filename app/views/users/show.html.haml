@@ -1,0 +1,9 @@
+%h1 Konto bearbeiten
+= @user.email
+%br
+%br
+= link_to 'Bearbeiten', edit_user_path(@user)
+|
+= link_to 'Löschen', user_path(@user), data: { confirm: 'Bist du sicher?' }, :method => :delete
+|
+=link_to 'Zurück', users_path

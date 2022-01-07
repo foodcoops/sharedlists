@@ -1,4 +1,4 @@
-class GeneralizeFtpSyncBeyondBnn < ActiveRecord::Migration
+class GeneralizeFtpSyncBeyondBnn < ActiveRecord::Migration[4.2]
   def change
     rename_column :suppliers, :bnn_sync, :ftp_sync
     rename_column :suppliers, :bnn_host, :ftp_host

@@ -1,0 +1,10 @@
+= simple_form_for @user do |f|
+  = f.input :email, required: true
+  = f.input :password, required: true
+  = f.input :password_confirmation, required: true
+  = f.input :admin, required: true
+
+  .form-actions
+    = f.submit class: 'btn'
+
+= link_to 'Zurück', users_path
