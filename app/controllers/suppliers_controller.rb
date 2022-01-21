@@ -1,6 +1,6 @@
 class SuppliersController < ApplicationController
 
-  before_filter :authenticate_supplier_admin!, :except => [:index, :new, :create]
+  before_action :authenticate_supplier_admin!, :except => [:index, :new, :create]
 
   # GET /suppliers
   # GET /suppliers.xml
@@ -37,7 +37,7 @@ class SuppliersController < ApplicationController
   # POST /suppliers
   # POST /suppliers.xml
   def create
-    @supplier = Supplier.new(params[:supplier])
+    @supplier = Supplier.new(supplier_params)
 
     respond_to do |format|
       if @supplier.save
@@ -55,7 +55,7 @@ class SuppliersController < ApplicationController
   # PUT /suppliers/1.xml
   def update
     @supplier = Supplier.find(params[:id])
-    attrs = params[:supplier]
+    attrs = supplier_params
 
     respond_to do |format|
       # @todo fix by generating proper hidden input in html
@@ -64,7 +64,7 @@ class SuppliersController < ApplicationController
       # don't set password to blank on saving
       attrs = attrs.reject {|k,v| k == 'ftp_password' } if attrs[:ftp_password].blank?
 
-      if @supplier.update_attributes(attrs)
+      if @supplier.update(attrs)
         flash[:notice] = 'Supplier was successfully updated.'
         format.html { redirect_to supplier_url(@supplier) }
         format.xml  { head :ok }
@@ -85,5 +85,33 @@ class SuppliersController < ApplicationController
       format.html { redirect_to suppliers_url }
       format.xml  { head :ok }
     end
+  end
+
+  private
+
+  def supplier_params
+    params
+      .require(:supplier)
+      .permit(
+        :name,
+        :address,
+        :phone,
+        :phone2,
+        :fax,
+        :email,
+        :url,
+        :delivery_days,
+        :note,
+        :ftp_sync,
+        :ftp_host,
+        :ftp_user,
+        :ftp_password,
+        :ftp_type,
+        :ftp_regexp,
+        :mail_sync,
+        :mail_type,
+        :mail_from,
+        :mail_subject
+      )
   end
 end

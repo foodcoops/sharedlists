@@ -1,40 +1,44 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
 
   has_many :user_accesses, :dependent => :destroy
   has_many :suppliers, :through => :user_accesses
 
-  attr_accessible :email, :password, :password_confirmation
+  attr_reader :password
 
-  attr_accessor :password
-  before_save :encrypt_password
-
-  validates_confirmation_of :password
-  validates_presence_of :password, :on => :create
-  validates_presence_of :email
-  validates_uniqueness_of :email
-
-  def self.authenticate(email, password)
-    user = find_by_email(email)
-    if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
-      user
-    else
-      nil
+  validates :email, presence: true, uniqueness: true
+  validates :password, confirmation: true
+  validate do |user|
+    unless user.password_hash.present? && user.password_salt.present?
+      user.errors.add :password, :blank
     end
   end
 
-  def encrypt_password
-    if password.present?
-      self.password_salt = BCrypt::Engine.generate_salt
-      self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
-    end
+  def self.attributes_protected_by_default
+    super + %w(password_hash password_salt)
   end
 
   def has_access_to?(supplier)
-    admin? or !UserAccess.first(:conditions => {:supplier_id => supplier.id, :user_id => id}).nil?
+    admin? or !UserAccess.where(supplier_id: supplier.id, user_id: id).first.nil?
+  end
+
+  def authenticate(password_plain)
+    if self.password_hash == BCrypt::Engine.hash_secret(password_plain, self.password_salt)
+      self
+    else
+      false
+    end
+  end
+
+  def password=(password_plain)
+    @password = password_plain
+    unless password_plain.blank?
+      new_salt = BCrypt::Engine.generate_salt
+      self.password_hash = BCrypt::Engine.hash_secret(password_plain, new_salt)
+      self.password_salt = new_salt
+    end
   end
 
   def admin?
     !!admin
   end
-
 end

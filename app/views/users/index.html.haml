@@ -1,0 +1,8 @@
+%h1 Konten
+- for user in @users
+  %li 
+    = link_to user.email, user_path(user)
+%br
+= link_to 'Neues Konto', new_user_url
+|
+= link_to 'Zurück', suppliers_path

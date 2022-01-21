@@ -2,7 +2,7 @@
 
 class ArticlesController < ApplicationController
 
-  before_filter :authenticate_supplier_admin!
+  before_action :authenticate_supplier_admin!
 
   # GET /supplier/:id/articles
   # GET /supplier/:id/articles.xml
@@ -15,11 +15,11 @@ class ArticlesController < ApplicationController
     elsif params[:order]
       case params[:order]
       when 'updated_on'
-        @articles = @supplier.articles.paginate :all, :order => "updated_on DESC", :page => params[:page]
+        @articles = @supplier.articles.all.page(params[:page]).order(updated_on: :desc)
         @updated_on = true
       end
     else
-      @articles = @supplier.articles.paginate :page => params[:page]
+      @articles = @supplier.articles.page(params[:page])
     end
 
     respond_to do |format|
@@ -52,7 +52,7 @@ class ArticlesController < ApplicationController
   # POST /supplier/1/articles
   # POST /supplier/1/articles.xml
   def create
-    @article = Article.new(params[:article])
+    @article = Article.new(article_params)
     respond_to do |format|
       if @article.save
         flash[:notice] = 'Article was successfully created.'
@@ -70,7 +70,7 @@ class ArticlesController < ApplicationController
   def update
     @article = @supplier.articles.find(params[:id])
     respond_to do |format|
-      if @article.update_attributes(params[:article])
+      if @article.update(article_params)
         flash[:notice] = 'Article was successfully updated.'
         format.html { redirect_to supplier_article_url(@article.supplier, @article) }
         format.xml  { head :ok }
@@ -144,4 +144,26 @@ class ArticlesController < ApplicationController
     redirect_to supplier_articles_url(@supplier)
   end
 
+  private
+
+  def article_params
+    params
+      .require(:article)
+      .permit(
+        :name,
+        :number,
+        :note,
+        :manufacturer,
+        :origin,
+        :unit,
+        :price,
+        :tax,
+        :deposit,
+        :unit_quantity,
+        :category,
+        :scale_quantity,
+        :scale_price,
+        :supplier_id
+      )
+  end
 end

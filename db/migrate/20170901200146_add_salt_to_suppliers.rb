@@ -1,4 +1,4 @@
-class AddSaltToSuppliers < ActiveRecord::Migration
+class AddSaltToSuppliers < ActiveRecord::Migration[4.2]
 
   class Supplier < ActiveRecord::Base; end
 
@@ -7,7 +7,7 @@ class AddSaltToSuppliers < ActiveRecord::Migration
 
     Supplier.find_each do |supplier|
       salt = [Array.new(6){rand(256).chr}.join].pack("m").chomp
-      supplier.update_attributes! salt: salt
+      supplier.update! salt: salt
     end
 
     change_column_null :suppliers, :salt, false

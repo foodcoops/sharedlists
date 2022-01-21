@@ -1,7 +1,7 @@
-FROM alpine:3.5
+FROM alpine:3.14
 
-ENV BUILD_PKGS="build-base ruby-dev libffi-dev libxml2-dev mariadb-dev" \
-    RUNTIME_PKGS="ruby ruby-json ruby-bigdecimal ruby-irb ruby-bundler ca-certificates mariadb-client" \
+ENV BUILD_PKGS="build-base ruby-dev libffi-dev libxml2-dev mariadb-dev sqlite-dev" \
+    RUNTIME_PKGS="ruby ruby-json ruby-bigdecimal ruby-irb ruby-bundler ca-certificates mariadb-client sqlite tzdata" \
     DEVELOPMENT_PKGS="bash"
 
 RUN apk --no-cache add $BUILD_PKGS $RUNTIME_PKGS $DEVELOPMENT_PKGS
@@ -12,8 +12,8 @@ USER app
 
 ENV BUNDLE_JOBS=4 \
   BUNDLE_PATH=/srv/app/vendor/bundle \
-  GEM_PATH=/srv/app/vendor/bundle:$GEM_PATH \
-  PATH=/srv/app/vendor/bundle/bin:$PATH
+  GEM_PATH=/srv/app/vendor/bundle/ruby/2.7.0:$GEM_PATH \
+  PATH=/srv/app/vendor/bundle/ruby/2.7.0/bin:$PATH
 
 EXPOSE 3000
 

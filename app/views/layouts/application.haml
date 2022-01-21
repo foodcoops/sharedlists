@@ -5,6 +5,7 @@
     %title=h "SharedLists: " + controller.controller_name
     = stylesheet_link_tag 'application'
     = csrf_meta_tag
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     #content
       - if flash[:notice]
@@ -19,5 +20,4 @@
       - else
         = link_to "Log in", log_in_path
 
-    = javascript_include_tag 'application'
     = yield :javascript

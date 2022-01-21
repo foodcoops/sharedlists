@@ -38,6 +38,6 @@
 
 = link_to 'Bearbeiten', edit_supplier_path(@supplier)
 |
-= link_to 'Löschen', supplier_path(@supplier), :confirm => 'Bist du sicher?', :method => :delete
+= link_to 'Löschen', supplier_path(@supplier), data: { confirm: 'Bist du sicher?' }, :method => :delete
 |
 = link_to 'Zurück', suppliers_path

@@ -1,5 +1,4 @@
-class CreateSuppliers < ActiveRecord::Migration
-  SUPPLIER_SAMPLE = 'Sample Supplier'
+class CreateSuppliers < ActiveRecord::Migration[4.2]
   
   def self.up
     create_table :suppliers do |t|
@@ -17,12 +16,6 @@ class CreateSuppliers < ActiveRecord::Migration
       t.column :updated_on, :datetime
     end
     add_index(:suppliers, :name, :unique => true)
-    
-    # Create sample supplier...
-    puts "Creating sample supplier '#{SUPPLIER_SAMPLE}'..."
-    Supplier.create(:name => SUPPLIER_SAMPLE, :address => "Organic City", :phone => "0123-555555")
-    raise "Failed!" unless supplier = Supplier.find_by_name(SUPPLIER_SAMPLE)
-    
   end
 
   def self.down

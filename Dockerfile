@@ -1,4 +1,4 @@
-FROM ruby:2.3
+FROM ruby:2.7.5
 
 RUN supercronicUrl=https://github.com/aptible/supercronic/releases/download/v0.1.3/supercronic-linux-amd64 && \
     supercronicBin=/usr/local/bin/supercronic && \
@@ -27,12 +27,12 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
 
 # compile assets with temporary mysql server
 RUN export DATABASE_URL=mysql2://localhost/temp && \
-    export SECRET_TOKEN=thisisnotimportantnow && \
+    export SECRET_KEY_BASE=thisisnotimportantnow && \
     export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
     apt-get install -y mysql-server && \
     /etc/init.d/mysql start && \
-    bundle exec rake db:setup assets:precompile && \
+    rails db:setup assets:precompile && \
     rm -Rf tmp/* && \
     /etc/init.d/mysql stop && \
     rm -Rf /run/mysqld /tmp/* /var/tmp/* /var/lib/mysql /var/log/mysql* && \

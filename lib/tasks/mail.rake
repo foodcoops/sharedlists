@@ -95,16 +95,16 @@ end
 
 namespace :mail do
   desc "Parse incoming email on stdin (options: RECIPIENT=1.a1b2c3d3e5)"
-  task :parse_reply_email => :environment do
+  task parse_reply_email: :environment do
     hande_mail(ENV['RECIPIENT'], STDIN.read)
   end
 
   desc "Start STMP server for incoming email (options: SMTP_SERVER_PORT=2525, SMTP_SERVER_HOST=127.0.0.1)"
   task :smtp_server => :environment do
-    port = (ENV['SMTP_SERVER_PORT'] || 2525).to_i
+    port = ENV['SMTP_SERVER_PORT'] || '2525'
     host = ENV['SMTP_SERVER_HOST'] || '127.0.0.1'
     rake_say "Started SMTP server for incoming email on #{host}:#{port}."
-    server = ReplyEmailSmtpServer.new(port, host)
+    server = ReplyEmailSmtpServer.new(ports: port, hosts: host)
     server.start
     server.join
   end
