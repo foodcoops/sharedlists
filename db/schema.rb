@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_19_074758) do
+ActiveRecord::Schema.define(version: 2022_04_14_114141) do
 
-  create_table "articles", charset: "utf8", force: :cascade do |t|
+  create_table "articles", force: :cascade do |t|
     t.string "name", null: false
     t.integer "supplier_id", null: false
     t.string "number"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2021_12_19_074758) do
     t.decimal "tax", precision: 3, scale: 1, default: "7.0", null: false
     t.decimal "deposit", precision: 8, scale: 2, default: "0.0", null: false
     t.decimal "unit_quantity", precision: 4, scale: 1, default: "1.0", null: false
-    t.decimal "scale_quantity", precision: 4, scale: 2
+    t.decimal "scale_quantity", precision: 8, scale: 2
     t.decimal "scale_price", precision: 8, scale: 2
     t.datetime "created_on"
     t.datetime "updated_on"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2021_12_19_074758) do
     t.index ["number", "supplier_id"], name: "index_articles_on_number_and_supplier_id", unique: true
   end
 
-  create_table "suppliers", charset: "utf8", force: :cascade do |t|
+  create_table "suppliers", force: :cascade do |t|
     t.string "name", null: false
     t.string "address", null: false
     t.string "phone", null: false
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2021_12_19_074758) do
     t.index ["name"], name: "index_suppliers_on_name", unique: true
   end
 
-  create_table "user_accesses", charset: "utf8", force: :cascade do |t|
+  create_table "user_accesses", force: :cascade do |t|
     t.integer "user_id"
     t.integer "supplier_id"
     t.datetime "created_at"
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2021_12_19_074758) do
     t.index ["user_id"], name: "index_user_accesses_on_user_id"
   end
 
-  create_table "users", charset: "utf8", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_hash"
     t.string "password_salt"
