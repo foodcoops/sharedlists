@@ -1,56 +1,16 @@
-# Sharedlists
+Sharedlists
+===========
 
-[![Docker Status](https://img.shields.io/docker/build/foodcoops/sharedlists.svg)](https://hub.docker.com/r/foodcoops/sharedlists)
-
-Sharedlists is a simple rails driven database for managing multiple product lists of various suppliers.
+Sharedlists is a simple [Rails](https://rubyonrails.org/) driven database for managing multiple product lists of various suppliers.
 
 This app is used in conjunction with [foodsoft](https://github.com/foodcoops/foodsoft).
-Recommended [Ruby](http://ruby-lang.org/) version is 2.7.
 
 
-## Development
+## Setup
 
-### Setup
-
-Copy `config/database.yml.SAMPLE` to `config/database.yml` and
-
-    docker-compose run --rm app bundle
-    docker-compose run --rm app rails db:setup
-
-### Run
-
-    docker-compose up
-
-### Login
-
-Login using the default credentials: admin@example.com/secret and update the account details to your needs.
-You can create more users within the web interface.
-
-## Production
-
-Either fetch the image, or build it:
-
-    docker pull sharedlists:latest
-    # or
-    docker build --tag sharedlists:latest --rm .
-
-Then set environment variables `SECRET_KEY_BASE` and `DATABASE_URL` and run:
-
-    docker run --name sharedlists_web \
-      -e SECRET_KEY_BASE -e DATABASE_URL -e RAILS_FORCE_SSL=false \
-      sharedlists:latest
-
-To run cronjobs, start another instance:
-
-    docker run --name sharedlists_cron \
-      -e SECRET_KEY_BASE -e DATABASE_URL \
-      sharedlists:latest  ./proc-start cron
-
-If you want to process incoming mails, add another instance like the previous,
-substituting `mail` for `cron`.
-
-To put this all together, you may want to wrap this in docker-compose. See
-the [foodcoops.net setup](https://github.com/foodcoops/foodcoops.net/) for a real-world example.
+There are mutliple way how to setup Sharedlists:
+- [Docker](doc/Docker.md) based
+- [Build](doc/Build.md) it yourself
 
 
 ## Connecting Foodsoft
