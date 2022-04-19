@@ -1,43 +1,43 @@
-%h1 Lieferantin anzeigen
+%h1= t('.Show supplier')
 %p
-  Name:
+  #{t('.name')}:
   %br/
   %strong= @supplier.name
 %p
-  Adresse:
+  #{t('.address')}:
   %br/
   %strong= @supplier.address
 %p
-  Telefon 1:
+  #{t('.phone')} 1:
   %br/
   %strong= @supplier.phone
 %p
-  Telefon 2:
+  #{t('.phone')} 2:
   %br/
   %strong= @supplier.phone2
 %p
-  Fax:
+  #{t('.fax')}:
   %br/
   %strong= @supplier.fax
 %p
-  E-Mail:
+  #{t('.email')}:
   %br/
   %a{:href => "mailto:#{@supplier.email}" }= @supplier.email
 %p
-  Webseite:
+  #{t('.website')}:
   %br/
   %a{:href => @supplier.url, :target => "_blank" }= @supplier.url
 %p
-  Liefertage:
+  #{t('.delivery_days')}:
   %br/
   %strong= @supplier.delivery_days
 %p
-  Notiz:
+  #{t('.note')}:
   %br/
   %strong= @supplier.note
 
-= link_to 'Bearbeiten', edit_supplier_path(@supplier)
+= link_to t('.edit'), edit_supplier_path(@supplier)
 |
-= link_to 'Löschen', supplier_path(@supplier), data: { confirm: 'Bist du sicher?' }, :method => :delete
+= link_to t('.delete'), supplier_path(@supplier), data: { confirm: t('.confirm_delete') }, :method => :delete
 |
-= link_to 'Zurück', suppliers_path
+= link_to t('.back'), suppliers_path

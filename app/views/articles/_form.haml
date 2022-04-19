@@ -1,54 +1,54 @@
 %p
-  Name:
+  #{t('.name')}:
   %br/
   = f.text_field :name
 %p
-  Nummer:
+  #{t('.number')}:
   %br/
   = f.text_field :number
 %p
-  Notiz:
+  #{t('.note')}:
   %br/
   = f.text_field :note
 %p
-  Herstellerin:
+  #{t('.manufacturer')}:
   %br/
   = f.text_field :manufacturer
 %p
-  Herkunft:
+  #{t('.origin')}:
   %br/
   = f.text_field :origin
 %p
-  Einheit:
+  #{t('.unit')}:
   %br/
   = f.text_field :unit
 %p
-  Preis:
+  #{t('.price')}:
   %br/
   = f.text_field :price
 %p
-  Steuer:
+  #{t('.tax')}:
   %br/
   = f.text_field :tax
 %p
-  Pfand:
+  #{t('.deposit')}:
   %br/
   = f.text_field :deposit
 %p
-  Gebindegröße:
+  #{t('.unit_quantity')}:
   %br/
   = f.text_field :unit_quantity
 %p
-  Kategorie:
+  #{t('.category')}:
   %br/
   = f.text_field :category
 %p
-  Rabattmenge:
+  #{t('.scale_quantity')}:
   %br/
   = f.text_field :scale_quantity
 %p
-  Rabattpreis:
+  #{t('.scale_price')}:
   %br/
   = f.text_field :scale_price
-%p= submit_tag "Speichern"
+%p= f.submit class: 'btn btn-primary'
 = f.hidden_field :supplier_id

@@ -15,9 +15,9 @@
           .collapse.navbar-collapse#navbarSupportedContent
             .navbar-nav.me-auto.mb-2.mb-lg-0
               .nav-item
-                = link_to 'Lieferanten', suppliers_path, class: "nav-link"
+                = link_to t('.suppliers'), suppliers_path, class: "nav-link"
               .nav-item
-                = link_to 'Konten', users_path, class: "nav-link"
+                = link_to t('.accounts'), users_path, class: "nav-link"
           .d-flex
             Logged in as #{current_user.email}&nbsp;#{link_to("log out", log_out_path)}
     .container

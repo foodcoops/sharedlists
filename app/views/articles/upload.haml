@@ -1,26 +1,25 @@
 %h1
-  Artikel für
-  = @supplier.name
-  hochladen
+  #{t('.upload_article_for')}:
+  =@supplier.name
 %p
-  %i Bitte (BNN-)Datei zum upload auswählen
+  %i= t('.note')
 #uploadArticles.uploadForm
   = form_for(:articles, :url => {:controller => 'articles', :action => 'parse'}, :html => { :multipart => true }) do |form|
     %p
-      Upload:
+      #{t('.upload')}:
       = form.file_field("file")
     %p
-      Datei-Format auswählen:
+      #{t('.choose_file_format')}:
       %select{:name => 'type'}
         = options_for_select([["", ""]] + ArticleImport::file_formats.invert.map{|f,k| [f::NAME, k]})
     %p
-      Zeichenkodierung:
+      #{t('.encoding')}:
       %select{:name => 'encoding'}
         = options_for_select({"Default" => "", "UTF-8" => "UTF-8", "IBM850 (Terra)" => "IBM850", "ISO-8859-15 (Ökotopia)" => "ISO-8859-15"})
     %p
       = check_box_tag :delete_existing
-      = label_tag :delete_existing, "Delete existing articles first"
+      = label_tag :delete_existing, t('.delete_existing_articles_first')
 
-    = submit_tag("Artikel hochladen")
+    = submit_tag t('.upload_article_btn'), class: 'btn btn-primary'
     = hidden_field_tag :supplier_id, @supplier.id
-%p= link_to 'zurück', supplier_articles_url(@supplier)
+%p= link_to t('.back'), supplier_articles_url(@supplier)

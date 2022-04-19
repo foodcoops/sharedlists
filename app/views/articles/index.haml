@@ -1,44 +1,44 @@
 %h1
   = @supplier.articles.size
-  Artikel von 
+  #{t('.title')}
   = @supplier.name
 
 %p
-  Aktionen:
-  = link_to 'Alle löschen', destroy_all_supplier_articles_url(@supplier), :method => :delete, data: { confirm: 'Willst Du wirklich alle löschen?' }
+  #{t('.actions')}:
+  = link_to t('.delete_all'), destroy_all_supplier_articles_url(@supplier), :method => :delete, data: { confirm: t('.confirm_delete_all') }
   |
-  = link_to "Artikel hochladen", upload_supplier_articles_url(@supplier)
+  = link_to t('.upload_article'), upload_supplier_articles_url(@supplier)
   |
-  = link_to 'Neuer Artikel', new_supplier_article_url(@supplier)
+  = link_to t('add_article'), new_supplier_article_url(@supplier)
   |
-  = link_to "zurück", suppliers_url
+  = link_to t('.back'), suppliers_url
   
 #filter{:style => "float:left;padding-right:1em;"}
   = form_tag supplier_articles_url(@supplier), :method => :get do
-    Suchen im Namen:
+    #{t('.search_by_name')}:
     = text_field_tag :filter, @filter
-    = submit_tag 'Suchen'
+    = submit_tag t('.search')
 #sort{:style => "float:left;padding-right:1em;"}
   = form_tag supplier_articles_url(@supplier), :method => :get do
-    Sortieren nach: aktualisiert
+    #{t('.sort_by')}: #{t('.updated')}
     = check_box_tag :order, "updated_on", @updated_on, {:onclick => "submit();"}
 |
-= link_to 'Filter zurücksetzen', supplier_articles_url(@supplier)
+= link_to t('.reset_filter'), supplier_articles_url(@supplier)
   
 #list{:style => "clear:both;padding-top:1em"}
   %p= will_paginate @articles
   %table.table
     %tr
-      %th Name
-      %th Nummer
-      %th Notiz
-      %th Herstellerin
-      %th Herkunft
-      %th Einheit
-      %th Preis
-      %th Steuer
-      %th Pfand
-      %th Gebindegröße
+      %th= t('.name')
+      %th= t('.number')
+      %th= t('.note')
+      %th= t('.manufacturer')
+      %th= t('.origin')
+      %th= t('.quantity')
+      %th= t('.price')
+      %th= t('.tax')
+      %th= t('.deposit')
+      %th= t('.unit_quantity')
       %th
       %th
       %th
@@ -54,7 +54,7 @@
         %td=h article.tax
         %td=h article.deposit
         %td=h article.unit_quantity
-        %th= link_to 'Anzeigen', supplier_article_url(@supplier, article)
-        %th= link_to 'Bearbeiten', edit_supplier_article_url(article.supplier, article)
-        %th= link_to 'Löschen', supplier_article_url(@supplier, article), data: { confirm: 'Bist du sicher?' }, :method => :delete
+        %th= link_to t('.show'), supplier_article_url(@supplier, article)
+        %th= link_to t('.edit'), edit_supplier_article_url(article.supplier, article)
+        %th= link_to t('.delete'), supplier_article_url(@supplier, article), data: { confirm: t('.confirm_delete') }, :method => :delete
   %p= will_paginate @articles

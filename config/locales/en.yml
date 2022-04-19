@@ -37,7 +37,7 @@ en:
         order_howto: How to order
         phone: Phone
         phone2: Phone 2
-        url: Homepage
+        url: Website
       user:
         email: Email
         first_name: First name
@@ -50,6 +50,27 @@ en:
       article: Article
       supplier: Supplier
       user: User
+  articles:
+    index:
+      confirm_delete: Are you sure?
+      confirm_delete_all: Are you sure to delete all articles?
+      search: Search
+      title: articles of
+    upload:
+      note: Please choose a file to upload
+      upload_article: Upload article for
+      upload_article_btn: Upload article
+  sessions:
+    new:
+      login: Login
   suppliers:
     form:
       ftp_regexp_hint: "Must fit to file format. Example: \\A(?:[.]/)?PL.{0,6}[.]BNN\\z for bnn, \\A(?:[.]/)?.+[.]csv\\z for foodsoft."
+    index:
+      add_supplier: Add supplier
+      articles: Articles
+    show:
+      confirm_delete: Are you sure?
+  user:
+    show:
+      confirm_delete: Are you sure?

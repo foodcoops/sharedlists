@@ -1,11 +1,11 @@
-%h1 Konten
+%h1= t('.accounts')
 %p
-  Aktionen:
-  = link_to 'Neues Konto', new_user_url
+  #{t('.actions')}:
+  = link_to t('.add_account'), new_user_url
 %table.table
   %th Name
   %th
   - for user in @users
     %tr
       %td= link_to user.email, user_path(user)
-      %td= link_to 'Bearbeiten', edit_user_path(user)
+      %td= link_to t('.edit'), edit_user_path(user)
