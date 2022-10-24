@@ -194,6 +194,7 @@ GEM
       sprockets-rails
       tilt
     selenium-webdriver (4.1.0)
+    sd_notify (0.1.1)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
@@ -268,6 +269,7 @@ DEPENDENCIES
   roo
   roo-xls
   sass-rails (>= 6)
+  sd_notify
   selenium-webdriver
   simple_form
   spring
