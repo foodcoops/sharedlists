@@ -1,8 +1,8 @@
-FROM ruby:2.7.5
+FROM ruby:2.7
 
-RUN supercronicUrl=https://github.com/aptible/supercronic/releases/download/v0.1.3/supercronic-linux-amd64 && \
+RUN supercronicUrl=https://github.com/aptible/supercronic/releases/download/v0.2.1/supercronic-linux-amd64 && \
     supercronicBin=/usr/local/bin/supercronic && \
-    supercronicSha1sum=96960ba3207756bb01e6892c978264e5362e117e && \
+    supercronicSha1sum=d7f4c0886eb85249ad05ed592902fa6865bb9d70 && \
     curl -fsSL -o "$supercronicBin" "$supercronicUrl" && \
     echo "$supercronicSha1sum  $supercronicBin" | sha1sum -c - && \
     chmod +x "$supercronicBin"
@@ -19,7 +19,9 @@ COPY . ./
 # install dependencies, recognize database_url, generate crontab
 RUN echo 'gem: --no-document' >> ~/.gemrc && \
     bundle config build.nokogiri "--use-system-libraries" && \
-    bundle install --deployment --without development test -j 4 && \
+    bundle config set --local without 'development test' && \
+    bundle config set deployment 'true' && \
+    bundle install -j 4 && \
     rm -Rf /var/lib/apt/lists/* /var/cache/apt/* ~/.gemrc ~/.bundle && \
     \
     echo "production:\n  url: <%= ENV['DATABASE_URL'] %>" >config/database.yml && \
@@ -29,14 +31,16 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
 RUN export DATABASE_URL=mysql2://localhost/temp && \
     export SECRET_KEY_BASE=thisisnotimportantnow && \
     export DEBIAN_FRONTEND=noninteractive && \
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list &&\
     apt-get update && \
-    apt-get install -y mysql-server && \
-    /etc/init.d/mysql start && \
-    rails db:setup assets:precompile && \
+    apt-get install -y mariadb-server yarn && \
+    /usr/sbin/service mariadb start && \
+    bundle exec rails webpacker:install db:setup assets:precompile && \
     rm -Rf tmp/* && \
-    /etc/init.d/mysql stop && \
+    /usr/sbin/service mariadb stop && \
     rm -Rf /run/mysqld /tmp/* /var/tmp/* /var/lib/mysql /var/log/mysql* && \
-    apt-get purge -y --auto-remove mysql-server && \
+    apt-get purge -y --auto-remove mariadb-server yarn && \
     rm -Rf /var/lib/apt/lists/* /var/cache/apt/*
 
 # Make relevant dirs writable for app user
