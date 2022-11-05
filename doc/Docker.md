@@ -15,7 +15,7 @@ Setup Sharedlists with Docker
    docker-compose up
    ```
 1. Open your favorite browser and open the web browser at http://localhost:3000/
-1.  Login using the default credentials: `admin@example.com/secret`
+1. Login using the default credentials: `admin@example.com/secret`
 
 
 ## Production Setup
