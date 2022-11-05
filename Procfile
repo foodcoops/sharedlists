@@ -1,3 +1,3 @@
-web: rails server --binding=0.0.0.0 --port=$PORT
-mail: rails mail:smtp_server
+web: bundle exec rails server --binding=0.0.0.0 --port=$PORT
+mail: bundle exec rails mail:smtp_server
 cron: supercronic crontab
