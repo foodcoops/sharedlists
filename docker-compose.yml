@@ -8,9 +8,9 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile.development
-    command: bundle exec rails server -b 0.0.0.0
+    command: ./proc-start web
     volumes:
-      - ./:/srv/app
+      - ./:/usr/src/app
     ports:
       - 3000:3000
     depends_on:

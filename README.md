@@ -15,6 +15,7 @@ Recommended [Ruby](http://ruby-lang.org/) version is 2.7.
 Copy `config/database.yml.SAMPLE` to `config/database.yml` and
 
     docker-compose run --rm app bundle
+    docker-compose run --rm app yarn
     docker-compose run --rm app rails db:setup
 
 ### Run

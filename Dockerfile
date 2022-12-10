@@ -7,6 +7,12 @@ RUN supercronicUrl=https://github.com/aptible/supercronic/releases/download/v0.1
     echo "$supercronicSha1sum  $supercronicBin" | sha1sum -c - && \
     chmod +x "$supercronicBin"
 
+RUN export DEBIAN_FRONTEND=noninteractive && \
+    apt-get update && \
+    apt-get install -y yarnpkg && \
+    apt-get clean && \
+    rm -Rf /var/lib/apt/lists/* /var/cache/apt/*
+
 ENV PORT=3000 \
     RAILS_ENV=production \
     RAILS_LOG_TO_STDOUT=true \
@@ -20,6 +26,7 @@ COPY . ./
 RUN echo 'gem: --no-document' >> ~/.gemrc && \
     bundle config build.nokogiri "--use-system-libraries" && \
     bundle install --deployment --without development test -j 4 && \
+    yarn && \
     rm -Rf /var/lib/apt/lists/* /var/cache/apt/* ~/.gemrc ~/.bundle && \
     \
     echo "production:\n  url: <%= ENV['DATABASE_URL'] %>" >config/database.yml && \
