@@ -1,20 +1,26 @@
-FROM alpine:3.14
+FROM ruby:2.7.5
 
-ENV BUILD_PKGS="build-base ruby-dev libffi-dev libxml2-dev mariadb-dev sqlite-dev" \
-    RUNTIME_PKGS="ruby ruby-json ruby-bigdecimal ruby-irb ruby-bundler ca-certificates mariadb-client sqlite tzdata" \
-    DEVELOPMENT_PKGS="bash"
+RUN export DEBIAN_FRONTEND=noninteractive && \
+    apt-get update && \
+    apt-get install -y yarnpkg && \
+    apt-get clean && \
+    ln -s yarnpkg /usr/bin/yarn && \
+    rm -Rf /var/lib/apt/lists/* /var/cache/apt/*
 
-RUN apk --no-cache add $BUILD_PKGS $RUNTIME_PKGS $DEVELOPMENT_PKGS
+RUN echo 'gem: --no-document' >> ~/.gemrc && \
+    bundle config build.nokogiri "--use-system-libraries"
 
-RUN adduser -D -u 1000 -h /srv/app -s /bin/bash app
-WORKDIR /srv/app
+RUN adduser --disabled-login --uid 1000 --home /usr/src/app --shell /bin/bash app
+WORKDIR /usr/src/app
 USER app
 
 ENV BUNDLE_JOBS=4 \
-  BUNDLE_PATH=/srv/app/vendor/bundle \
-  GEM_PATH=/srv/app/vendor/bundle/ruby/2.7.0:$GEM_PATH \
-  PATH=/srv/app/vendor/bundle/ruby/2.7.0/bin:$PATH
+  BUNDLE_PATH=/usr/src/app/vendor/bundle \
+  GEM_PATH=/usr/src/app/vendor/bundle/ruby/2.7.0:$GEM_PATH \
+  PATH=/usr/src/app/vendor/bundle/ruby/2.7.0/bin:$PATH \
+  PORT=3000
 
 EXPOSE 3000
 
+ENTRYPOINT ["./docker-entrypoint.sh"]
 CMD ["bash"]
