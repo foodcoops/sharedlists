@@ -118,7 +118,7 @@ class ArticlesController < ApplicationController
 
     begin
       Article.transaction do
-        Article.delete_all :supplier_id => @supplier.id unless params[:delete_existing].blank?
+        Article.where(supplier_id: @supplier.id).delete_all unless params[:delete_existing].blank?
 
         @outlisted_counter, @new_counter, @updated_counter, @invalid_articles =
             @supplier.update_articles_from_file(file, type: type, encoding: encoding, filename: filename)
