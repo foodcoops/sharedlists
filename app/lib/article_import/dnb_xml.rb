@@ -1,4 +1,4 @@
-# Article import for De Nieuw Band XML file
+# Article import for De Nieuw Band / Odin XML file
 #
 # Always contains full assortment, including recently outlisted articles.
 # To make sure we don't keep old articles when a number of updates was missed,
@@ -8,7 +8,7 @@ require 'nokogiri'
 
 module ArticleImport::DnbXml
 
-  NAME = "De Nieuwe Band (XML)"
+  NAME = "Odin / Nieuwe Band (XML)"
   OUTLIST = true
   OPTIONS = {}.freeze
 

@@ -18,6 +18,7 @@ module ArticleImport
       'borkenstein' => ArticleImport::Borkenstein,
       'foodsoft' => ArticleImport::Foodsoft,
       'dnb_xml' => ArticleImport::DnbXml,
+      'dnb_zip' => ArticleImport::DnbZip,
       'bioromeo' => ArticleImport::Bioromeo,
     }.freeze
   end
