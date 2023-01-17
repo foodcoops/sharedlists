@@ -21,16 +21,9 @@ Copy `config/database.yml.SAMPLE` to `config/database.yml` and
 
     docker-compose up
 
-### Creating a user
+### Login
 
-To access sharedlists, you'll need to create a user (and I guess you want admin access).
-
-    docker-compose run --rm app rails c
-    > u = User.new(email: 'admin@example.com', password: 'secret')
-    > u.admin = true
-    > u.save!
-    > exit
-
+Login using the default credentials: admin@example.com/secret and update the account details to your needs.
 You can create more users within the web interface.
 
 ## Production
