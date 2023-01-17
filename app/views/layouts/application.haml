@@ -7,17 +7,27 @@
     = csrf_meta_tag
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    #content
-      - if flash[:notice]
-        %h3{:style => "color: green"}= flash[:notice]
-      - if flash[:error]
-        %h3{:style => "color: red"}= flash[:error]
-      = yield
-    #footer
-      %hr/
-      - if current_user.present?
-        Logged in as #{current_user.email}, #{link_to("log out", log_out_path)}
-      - else
-        = link_to "Log in", log_in_path
-
-    = yield :javascript
+    %nav{:class => "navbar navbar-expand-lg navbar-light bg-light"}
+      .container-fluid
+        .navbar-brand
+          SharedLists
+        - if current_user.present?
+          .collapse.navbar-collapse#navbarSupportedContent
+            .navbar-nav.me-auto.mb-2.mb-lg-0
+              .nav-item
+                = link_to 'Lieferanten', suppliers_path, class: "nav-link"
+              .nav-item
+                = link_to 'Konten', users_path, class: "nav-link"
+          .d-flex
+            Logged in as #{current_user.email}&nbsp;#{link_to("log out", log_out_path)}
+    .container
+      #content
+        - if flash[:notice]
+          %br
+          .alert.alert-success{role: "alert"}= flash[:notice]
+        - if flash[:error]
+          %br
+          .alert.alert-danger{role: "alert"}= flash[:error]
+        = yield
+      #footer
+      = yield :javascript
