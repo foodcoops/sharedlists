@@ -30,11 +30,7 @@ This document describes how to setup Sharedlists  within your local system. If y
    ```
 1. Install [ruby-build](https://github.com/rbenv/ruby-build):
     ```Shell
-    mkdir -p "$(rbenv root)"/plugins
-    
-    git clone https://github.com/rbenv/ruby-build.
-    
-    git "$(rbenv root)"/plugins/ruby-build
+    git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
     ```
 1. Change to the Sharedlists directory and install the [recommended](https://github.com/foodcoops/sharedlists/blob/master/.ruby-version)
     Ruby version:
