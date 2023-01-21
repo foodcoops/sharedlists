@@ -120,6 +120,8 @@ GEM
     minitest (5.17.0)
     msgpack (1.6.0)
     mysql2 (0.5.4)
+    net-http (0.3.2)
+      uri
     net-imap (0.3.4)
       date
       net-protocol
@@ -228,6 +230,7 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
+    uri (0.12.0)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -269,6 +272,7 @@ DEPENDENCIES
   listen (~> 3.3)
   midi-smtp-server (~> 3.0)
   mysql2 (>= 0.5)
+  net-http
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.7)
