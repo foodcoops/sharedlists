@@ -1,8 +1,11 @@
 %h1 Konten
-- for user in @users
-  %li 
-    = link_to user.email, user_path(user)
-%br
-= link_to 'Neues Konto', new_user_url
-|
-= link_to 'Zurück', suppliers_path
+%p
+  Aktionen:
+  = link_to 'Neues Konto', new_user_url
+%table.table
+  %th Name
+  %th
+  - for user in @users
+    %tr
+      %td= link_to user.email, user_path(user)
+      %td= link_to 'Bearbeiten', edit_user_path(user)

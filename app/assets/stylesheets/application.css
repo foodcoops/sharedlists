@@ -2,6 +2,8 @@
  = require scaffold
 */
 
+@import "bootstrap/scss/bootstrap";
+
 .simple_form label:first-child {
   width: 160px;
   text-align: right;

@@ -1,5 +1,8 @@
 %h1 Lieferanten
-%table
+%p
+  Aktionen:
+  = link_to 'Neuer Lieferant', new_supplier_url
+%table.table
   %tr
     %th Name
     %th Adresse
@@ -7,7 +10,7 @@
     %th Liefertage
     %th Notiz
     %th Zuletzt aktualisiert
-    %th
+    %th Artikel
   - for supplier in @suppliers
     %tr
       %td= link_to supplier.name, supplier_path(supplier)
@@ -17,9 +20,3 @@
       %td= supplier.note
       %td= I18n.l supplier.articles_updated_at rescue nil
       %td= link_to  supplier.articles.size.to_s + ' Artikel', supplier_articles_url(supplier)
-
-%br/
-= link_to 'Neuer Lieferant', new_supplier_url
-|
-= link_to 'Konten', users_url
-    

@@ -27,7 +27,7 @@
   
 #list{:style => "clear:both;padding-top:1em"}
   %p= will_paginate @articles
-  %table
+  %table.table
     %tr
       %th Name
       %th Nummer
@@ -39,6 +39,9 @@
       %th Steuer
       %th Pfand
       %th Gebindegröße
+      %th
+      %th
+      %th
     - for article in @articles
       %tr
         %td=h article.name

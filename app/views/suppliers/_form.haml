@@ -35,7 +35,7 @@
     = f.input :mail_subject
 
   .form-actions
-    = f.submit class: 'btn'
+    = f.submit class: 'btn btn-primary'
     = link_to t('ui.or_cancel'), (@supplier.new_record? ? suppliers_path : supplier_path(@supplier))
 
 
