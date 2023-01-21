@@ -56,15 +56,15 @@ This document describes how to setup Sharedlists  within your local system. If y
     ```
 4. Copy `config/database.yml.SQLite_SAMPLE` to `config/database.yml` and setup your database:
     ```
-    rbenv exec rails db:setup
+    rbenv exec bundle exec rails db:setup
     ```
 5. Precompile all assets:
     ```
-    rbenv exec rails assets:precompile
+    rbenv exec bundle exec rails assets:precompile
     ```
 6. Start the rails server by running:
     ```
-    rbenv exec rails s
+    rbenv exec bundle exec rails s
     ```
 7. Open your favorite browser and open the web browser at http://localhost:3000/
 8.  Login using the default credentials: `admin@example.com/secret`
