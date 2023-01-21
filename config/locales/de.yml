@@ -1,0 +1,76 @@
+de:
+  activerecord:
+    attributes:
+      article:
+        article_category: Kategorie
+        deposit: Pfand
+        gross_price: Bruttopreis
+        manufacturer: Hersteller
+        name: Name
+        note: Notiz
+        order_number: Bestellnummer
+        origin: Herkunft
+        price: Preis (netto)
+        supplier: Lieferant
+        tax: MwSt.
+        unit: Einheit
+        unit_quantity: Gebindegröße
+        unit_quantity_short: GebGr
+        units: Einheiten
+      supplier:
+        address: Adresse
+        ftp_host: FTP Server
+        ftp_user: FTP Nutzer
+        ftp_password: FTP Passwort
+        ftp_sync: Synchronisiere Dateien über FTP
+        ftp_type: Dateiformat
+        ftp_regexp: Dateifilter (Regexp)
+        delivery_days: Liefertage
+        email: Email
+        fax: Fax
+        mail_sync: Aktualisiere Artikel per Email
+        mail_type: Dateiformat
+        min_order_quantity: Mindestbestellmenge
+        min_order_quantity_short: Mind.bestellmenge
+        name: Name
+        note: Notiz
+        order_howto: Wie bestellt werden kann
+        phone: Telefon
+        phone2: Telefon 2
+        url: Webseite
+      user:
+        email: Email
+        first_name: Vorname
+        last_name: Nachname
+        name: Name
+        password: Passwort
+        password_confirmation: Passwort wiederholen
+        phone: Telefon
+    models:
+      article: Artikel
+      supplier: Lieferant
+      user: Nutzer
+  articles:
+    index:
+      confirm_delete: Sind Sie sicher?
+      confirm_delete_all: Sollen alle Artikel gelöscht werden?
+      search: Suche
+      title: Artikel von
+    upload:
+      note: Bitte wählen Sie eine Datei zum Hochladen aus
+      upload_article: Hochladen von Artikel für
+      upload_article_btn: Artikel hochladen
+  sessions:
+    new:
+      login: Anmeldung
+  suppliers:
+    form:
+      ftp_regexp_hint: "Muss den Dateiformat entsprechend. Beispiel: \\A(?:[.]/)?PL.{0,6}[.]BNN\\z für bnn, \\A(?:[.]/)?.+[.]csv\\z für foodsoft."
+    index:
+      add_supplier: Lieferant hinzufügen
+      articles: Artikel
+    show:
+      confirm_delete: Sind Sie sicher?
+  user:
+    show:
+      confirm_delete: Sind Sie sicher?
