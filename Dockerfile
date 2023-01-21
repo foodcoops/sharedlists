@@ -1,4 +1,4 @@
-FROM ruby:2.7.5
+FROM ruby:2.7
 
 RUN supercronicUrl=https://github.com/aptible/supercronic/releases/download/v0.1.3/supercronic-linux-amd64 && \
     supercronicBin=/usr/local/bin/supercronic && \
@@ -58,3 +58,4 @@ EXPOSE 3000
 # cleanup, and by default start web process from Procfile
 ENTRYPOINT ["./docker-entrypoint.sh"]
 CMD ["./proc-start", "web"]
+
