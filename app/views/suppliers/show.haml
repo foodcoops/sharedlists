@@ -22,11 +22,11 @@
 %p
   E-Mail:
   %br/
-  %strong= @supplier.email
+  %a{:href => "mailto:#{@supplier.email}" }= @supplier.email
 %p
   Webseite:
   %br/
-  %strong= @supplier.url
+  %a{:href => @supplier.url, :target => "_blank" }= @supplier.url
 %p
   Liefertage:
   %br/
