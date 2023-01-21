@@ -1,8 +1,8 @@
 FROM ruby:2.7
 
-RUN supercronicUrl=https://github.com/aptible/supercronic/releases/download/v0.1.3/supercronic-linux-amd64 && \
+RUN supercronicUrl=https://github.com/aptible/supercronic/releases/download/v0.2.1/supercronic-linux-amd64 && \
     supercronicBin=/usr/local/bin/supercronic && \
-    supercronicSha1sum=96960ba3207756bb01e6892c978264e5362e117e && \
+    supercronicSha1sum=d7f4c0886eb85249ad05ed592902fa6865bb9d70 && \
     curl -fsSL -o "$supercronicBin" "$supercronicUrl" && \
     echo "$supercronicSha1sum  $supercronicBin" | sha1sum -c - && \
     chmod +x "$supercronicBin"
