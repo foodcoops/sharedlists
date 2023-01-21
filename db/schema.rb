@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_19_074758) do
+ActiveRecord::Schema.define(version: 2022_04_14_114141) do
 
   create_table "articles", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2021_12_19_074758) do
     t.decimal "tax", precision: 3, scale: 1, default: "7.0", null: false
     t.decimal "deposit", precision: 8, scale: 2, default: "0.0", null: false
     t.decimal "unit_quantity", precision: 4, scale: 1, default: "1.0", null: false
-    t.decimal "scale_quantity", precision: 4, scale: 2
+    t.decimal "scale_quantity", precision: 8, scale: 2
     t.decimal "scale_price", precision: 8, scale: 2
     t.datetime "created_on"
     t.datetime "updated_on"
