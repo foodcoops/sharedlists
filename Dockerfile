@@ -39,13 +39,13 @@ RUN export DATABASE_URL=mysql2://localhost/temp && \
     export SECRET_KEY_BASE=thisisnotimportantnow && \
     export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
-    apt-get install -y mysql-server && \
-    /etc/init.d/mysql start && \
-    rails db:setup assets:precompile && \
+    apt-get install -y mariadb-server yarn && \
+    /usr/sbin/service mariadb start && \
+    bundle exec rails webpacker:install db:setup assets:precompile && \
     rm -Rf tmp/* && \
-    /etc/init.d/mysql stop && \
+    /usr/sbin/service mariadb stop && \
     rm -Rf /run/mysqld /tmp/* /var/tmp/* /var/lib/mysql /var/log/mysql* && \
-    apt-get purge -y --auto-remove mysql-server && \
+    apt-get purge -y --auto-remove mariadb-server yarn && \
     rm -Rf /var/lib/apt/lists/* /var/cache/apt/*
 
 # Make relevant dirs writable for app user
