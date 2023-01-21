@@ -44,3 +44,4 @@ gem 'will_paginate-bootstrap-style'
 gem 'whenever', '~> 0.9', require: false
 gem 'mysql2', '>=0.5'
 gem 'base32'
+gem 'sd_notify'
