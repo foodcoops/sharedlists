@@ -16,7 +16,7 @@ There are mutliple way how to setup Sharedlists:
 ## Connecting Foodsoft
 
 To use shared suppliers from this sharedlists instance from within Foodsoft, you need
-to configure the [`shared_lists` option](https://github.com/foodcoops/foodsoft/blob/31689dfb75d203ab39405c313817e8c40e2cab36/config/app_config.yml.SAMPLE#L154)
+to configure the `shared_lists` [option](https://github.com/foodcoops/foodsoft/blob/31689dfb75d203ab39405c313817e8c40e2cab36/config/app_config.yml.SAMPLE#L154)
 in its `config/app_config.yml`. Don't forget to grant the Foodsoft database user
 `SELECT` access on sharedlists' `suppliers` and `articles` tables.
 
@@ -47,7 +47,10 @@ ignored. The two supported file formats and sensible choices for a corresponding
 
 Once you have the `sync_ftp_files` task working, you may wish to setup a
 [cron](https://en.wikipedia.org/wiki/Cron)job using
-[`whenever`](https://github.com/javan/whenever).
+[`whenever`](https://github.com/javan/whenever). The tasks you want to run:
+```Shell
+rails sync_ftp_files --silent > /dev/null
+```
 
 ### Email
 
