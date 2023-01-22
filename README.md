@@ -89,12 +89,8 @@ As you can see we are using the `MAILER_PREFIX` to filter incomming mails and re
 
 After that add the new transport to the Postfix configuration at `/etc/postfix/main.cf`:
 ```
-...
-transport_maps =
-    ...
-    pcre:/etc/postfix/transport_sharedlists,
-    ....
-....
+recipient_delimiter = +
+transport_maps = pcre:/etc/postfix/transport_sharedlists
 ```
 
 
