@@ -54,7 +54,7 @@ This document describes how to setup Sharedlists  within your local system. If y
     ```
     rbenv exec bundle install
     ```
-4. Copy `config/database.yml.SQLite_SAMPLE` to `config/database.yml` and setup your database:
+4. Copy `config/database.yml.SAMPLE` to `config/database.yml`, adapt to your needs and setup your database:
     ```
     rbenv exec bundle exec rails db:setup
     ```
