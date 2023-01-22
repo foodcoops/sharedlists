@@ -19,4 +19,4 @@
       %td= supplier.delivery_days
       %td= supplier.note
       %td= I18n.l supplier.articles_updated_at rescue nil
-      %td= link_to  supplier.articles.size.to_s + ' ' + t('.articles'), supplier_articles_url(supplier)
+      %td= link_to supplier.articles.size.to_s + ' ' + t('.articles'), supplier_articles_url(supplier)
