@@ -67,4 +67,5 @@ This document describes how to setup Sharedlists  within your local system. If y
     rbenv exec bundle exec rails s
     ```
 7. Open your favorite browser and open the web browser at http://localhost:3000/
-8.  Login using the default credentials: `admin@example.com/secret`
+8. Login using the default credentials: `admin@example.com/secret`
+9. For a production setup you run Sharedlists as a systemd service. You will find more information [here](Systemd.md).
