@@ -6,7 +6,7 @@ Probably you want to run the web application behind a reverse proxy that also
 does the SSL termination.
 
 1. Create a configuration file at `/etc/sharedlists/sharedlists.conf` that contains all necessary variables:
-   ```
+   ```Ini
    RBENV_CMD="rbenv exec"
    RAILS_ENV=production
    RAILS_FORCE_SSL=false
@@ -20,7 +20,7 @@ does the SSL termination.
    SMTP_SERVER_HOST=127.0.0.1
    ```
 1. Create a systemd socket file at `/etc/systemd/system/sharedlists-web.socket` for the web application:
-   ```
+   ```Ini
    [Unit]
    Description=Sharedlists HTTP Server Accept Sockets
    Documentation=https://github.com/puma/puma/blob/master/docs/systemd.md
@@ -37,7 +37,7 @@ does the SSL termination.
    WantedBy=sockets.target
    ```
 1. Create a systemd service file at `/etc/systemd/system/sharedlists-web.service`:
-   ```
+   ```Ini
    [Unit]
    Description=Sharedlists rails server
    Documentation=https://github.com/foodcoops/sharedlists
@@ -93,7 +93,7 @@ does the SSL termination.
    ```
 1. With the systemd socket you can restart the service without aborting existing connections.
 1. Create another service file for the internal mail server at `/etc/systemd/system/sharedlists-smtp.service`:
-   ```
+   ```Ini
    [Unit]
    Description=Sharedlists smtp server
    Documentation=https://github.com/foodcoops/sharedlists
