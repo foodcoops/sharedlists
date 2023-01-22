@@ -71,3 +71,31 @@ saving the supplier after _Send to_.
 This needs setting up of the environment variable `MAILER_DOMAIN`, on which you receive the
 mails. It is allowed to prefix the address, you may want to set the prefix in `MAILER_PREFIX`.
 This is useful when you're running a mail server in front to route mails.
+```
+MAILER_DOMAIN=example.com
+MAILER_PREFIX=sharedlists+
+
+# optional, default values are shown
+SMTP_SERVER_PORT=2525
+SMTP_SERVER_HOST=127.0.0.1
+```
+
+Your MTA needs to transport all incomming mails to the internal mail server. With Postfix create
+a new transport file `/etc/postfix/transport_sharedlists` with the following content:
+```
+/^sharedlists\+[0-9]*\.([0-9A-Z])*@example\.com$/  smtp:[127.0.0.1]:2525
+```
+As you can see we are using the `MAILER_PREFIX` to filter incomming mails and redirect them.
+
+After that add the new transport to the Postfix configuration at `/etc/postfix/main.cf`:
+```
+...
+transport_maps =
+    ...
+    pcre:/etc/postfix/transport_sharedlists,
+    ....
+....
+```
+
+
+
