@@ -129,4 +129,7 @@ does the SSL termination.
    SystemCallArchitectures=native
    SystemCallErrorNumber=EPERM
    SystemCallFilter=@system-service
+
+   [Install]
+   WantedBy=multi-user.target
    ```
