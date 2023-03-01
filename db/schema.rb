@@ -10,9 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_14_114141) do
-
-  create_table "articles", charset: "utf8", force: :cascade do |t|
+ActiveRecord::Schema[7.0].define(version: 2023_03_01_150110) do
+  create_table "articles", force: :cascade do |t|
     t.string "name", null: false
     t.integer "supplier_id", null: false
     t.string "number"
@@ -26,14 +25,14 @@ ActiveRecord::Schema.define(version: 2022_04_14_114141) do
     t.decimal "unit_quantity", precision: 4, scale: 1, default: "1.0", null: false
     t.decimal "scale_quantity", precision: 8, scale: 2
     t.decimal "scale_price", precision: 8, scale: 2
-    t.datetime "created_on"
-    t.datetime "updated_on"
+    t.datetime "created_on", precision: nil
+    t.datetime "updated_on", precision: nil
     t.string "category"
     t.index ["name"], name: "index_articles_on_name"
     t.index ["number", "supplier_id"], name: "index_articles_on_number_and_supplier_id", unique: true
   end
 
-  create_table "suppliers", charset: "utf8", force: :cascade do |t|
+  create_table "suppliers", force: :cascade do |t|
     t.string "name", null: false
     t.string "address", null: false
     t.string "phone", null: false
@@ -43,8 +42,8 @@ ActiveRecord::Schema.define(version: 2022_04_14_114141) do
     t.string "url"
     t.string "delivery_days"
     t.string "note"
-    t.datetime "created_on"
-    t.datetime "updated_on"
+    t.datetime "created_on", precision: nil
+    t.datetime "updated_on", precision: nil
     t.boolean "ftp_sync", default: false
     t.string "ftp_host"
     t.string "ftp_user"
@@ -59,22 +58,22 @@ ActiveRecord::Schema.define(version: 2022_04_14_114141) do
     t.index ["name"], name: "index_suppliers_on_name", unique: true
   end
 
-  create_table "user_accesses", charset: "utf8", force: :cascade do |t|
+  create_table "user_accesses", force: :cascade do |t|
     t.integer "user_id"
     t.integer "supplier_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.index ["supplier_id"], name: "index_user_accesses_on_supplier_id"
     t.index ["user_id", "supplier_id"], name: "index_user_accesses_on_user_id_and_supplier_id"
     t.index ["user_id"], name: "index_user_accesses_on_user_id"
   end
 
-  create_table "users", charset: "utf8", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_hash"
     t.string "password_salt"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end

@@ -71,6 +71,6 @@ en:
       articles: Articles
     show:
       confirm_delete: Are you sure?
-  user:
+  users:
     show:
       confirm_delete: Are you sure?
