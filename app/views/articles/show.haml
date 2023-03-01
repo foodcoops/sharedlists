@@ -48,7 +48,7 @@
   %br/
   %strong= @article.scale_price
 
-= link_to t('.show'), edit_supplier_article_path(@article.supplier, @article)
+= link_to t('.edit'), edit_supplier_article_path(@article.supplier, @article)
 |
 = link_to t('.delete'), supplier_article_path(@article.supplier), data: { turbo_method: :delete, turbo_confirm: t('.confirm_delete') }
 |
