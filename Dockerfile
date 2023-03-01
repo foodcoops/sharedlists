@@ -7,14 +7,6 @@ RUN supercronicUrl=https://github.com/aptible/supercronic/releases/download/v0.2
     echo "$supercronicSha1sum  $supercronicBin" | sha1sum -c - && \
     chmod +x "$supercronicBin"
 
-RUN export DEBIAN_FRONTEND=noninteractive && \
-    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list &&\
-    apt-get update && \
-    apt-get install -y yarn && \
-    apt-get clean && \
-    rm -Rf /var/lib/apt/lists/* /var/cache/apt/*
-
 ENV PORT=3000 \
     RAILS_ENV=production \
     RAILS_LOG_TO_STDOUT=true \
@@ -41,7 +33,7 @@ RUN export DATABASE_URL=mysql2://localhost/temp && \
     apt-get update && \
     apt-get install -y mariadb-server yarn && \
     /usr/sbin/service mariadb start && \
-    bundle exec rails webpacker:install db:setup assets:precompile && \
+    bundle exec rails db:setup assets:precompile && \
     rm -Rf tmp/* && \
     /usr/sbin/service mariadb stop && \
     rm -Rf /run/mysqld /tmp/* /var/tmp/* /var/lib/mysql /var/log/mysql* && \
@@ -60,4 +52,3 @@ EXPOSE 3000
 # cleanup, and by default start web process from Procfile
 ENTRYPOINT ["./docker-entrypoint.sh"]
 CMD ["./proc-start", "web"]
-
