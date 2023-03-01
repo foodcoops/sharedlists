@@ -74,5 +74,7 @@ de:
     show:
       confirm_delete: Sind Sie sicher?
   users:
+    index:
+      name: Name
     show:
       confirm_delete: Sind Sie sicher?

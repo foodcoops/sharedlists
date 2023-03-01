@@ -3,7 +3,7 @@
   #{t('.actions')}:
   = link_to t('.add_account'), new_user_url
 %table.table
-  %th Name
+  %th #{t('.name')}
   %th
   - for user in @users
     %tr
