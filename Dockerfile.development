@@ -1,12 +1,5 @@
 FROM ruby:2.7.7
 
-RUN export DEBIAN_FRONTEND=noninteractive && \
-    apt-get update && \
-    apt-get install -y yarnpkg && \
-    apt-get clean && \
-    ln -s yarnpkg /usr/bin/yarn && \
-    rm -Rf /var/lib/apt/lists/* /var/cache/apt/*
-
 RUN echo 'gem: --no-document' >> ~/.gemrc && \
     bundle config build.nokogiri "--use-system-libraries"
 
