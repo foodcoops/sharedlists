@@ -71,6 +71,6 @@ de:
       articles: Artikel
     show:
       confirm_delete: Sind Sie sicher?
-  user:
+  users:
     show:
       confirm_delete: Sind Sie sicher?
