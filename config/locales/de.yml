@@ -56,6 +56,8 @@ de:
       confirm_delete_all: Sollen alle Artikel gelöscht werden?
       search: Suche
       title: Artikel von
+    show:
+      confirm_delete: Sind Sie sicher?
     upload:
       note: Bitte wählen Sie eine Datei zum Hochladen aus
       upload_article: Hochladen von Artikel für

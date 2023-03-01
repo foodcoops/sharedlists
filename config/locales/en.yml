@@ -56,6 +56,8 @@ en:
       confirm_delete_all: Are you sure to delete all articles?
       search: Search
       title: articles of
+    show:
+      confirm_delete: Are you sure?
     upload:
       note: Please choose a file to upload
       upload_article: Upload article for

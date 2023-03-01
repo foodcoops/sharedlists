@@ -1,53 +1,54 @@
 %h1= @article.name
 %p
-  Nummer:
+  #{t('.number')}:
   %br/
   %strong= @article.number
 %p
-  Notiz:
+  #{t('.note')}:
   %br/
   %strong= @article.note
 %p
-  Herstellerin:
+  #{t('.manufacturer')}:
   %br/
   %strong= @article.manufacturer
 %p
-  Herkunft:
+  #{t('.origin')}:
   %br/
   %strong= @article.origin
 %p
-  Einheit:
+  #{t('.unit')}:
   %br/
   %strong= @article.unit
 %p
-  Preis:
+  #{t('.price')}:
   %br/
   %strong= @article.price
 %p
-  Steuer:
+  #{t('.tax')}:
   %br/
   %strong= @article.tax
 %p
-  Pfand:
+  #{t('.deposit')}:
   %br/
   %strong= @article.deposit
 %p
-  Gebindegröße:
+  #{t('.unit_quantity')}:
   %br/
   %strong= @article.unit_quantity
 %p
-  Kategorie:
+  #{t('.categroy')}:
   %br/
   %strong= @article.category
 %p
-  Rabattmenge:
+  #{t('.scale_quantity')}:
   %br/
   %strong= @article.scale_quantity
 %p
-  Rabattpreis:
+  #{t('.scale_price')}:
   %br/
   %strong= @article.scale_price
 
-= link_to 'Bearbeiten', edit_supplier_article_path(@article.supplier, @article)
+= link_to t('.show'), edit_supplier_article_path(@article.supplier, @article)
 |
-= link_to 'Zurück', supplier_articles_path(@article.supplier)
+|
+= link_to t('.back'), supplier_articles_path(@article.supplier)
