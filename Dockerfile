@@ -31,13 +31,13 @@ RUN export DATABASE_URL=mysql2://localhost/temp && \
     export SECRET_KEY_BASE=thisisnotimportantnow && \
     export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
-    apt-get install -y mariadb-server yarn && \
+    apt-get install -y mariadb-server nodejs && \
     /usr/sbin/service mariadb start && \
     bundle exec rails db:setup assets:precompile && \
     rm -Rf tmp/* && \
     /usr/sbin/service mariadb stop && \
     rm -Rf /run/mysqld /tmp/* /var/tmp/* /var/lib/mysql /var/log/mysql* && \
-    apt-get purge -y --auto-remove mariadb-server yarn && \
+    apt-get purge -y --auto-remove mariadb-server && \
     rm -Rf /var/lib/apt/lists/* /var/cache/apt/*
 
 # Make relevant dirs writable for app user
