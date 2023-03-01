@@ -5,7 +5,7 @@
 
 %p
   #{t('.actions')}:
-  = link_to t('.delete_all'), destroy_all_supplier_articles_url(@supplier), :method => :delete, data: { confirm: t('.confirm_delete_all') }
+  = link_to t('.delete_all'), destroy_all_supplier_articles_url(@supplier), data: { turbo_method: :delete, turbo_confirm: t('.confirm_delete') }
   |
   = link_to t('.upload_article'), upload_supplier_articles_url(@supplier)
   |
@@ -56,5 +56,5 @@
         %td=h article.unit_quantity
         %th= link_to t('.show'), supplier_article_url(@supplier, article)
         %th= link_to t('.edit'), edit_supplier_article_url(article.supplier, article)
-        %th= link_to t('.delete'), supplier_article_url(@supplier, article), data: { confirm: t('.confirm_delete') }, :method => :delete
+        %th= link_to t('.delete'), supplier_article_url(@supplier, article), data: { turbo_method: :delete, turbo_confirm: t('.confirm_delete') }
   %p= will_paginate @articles

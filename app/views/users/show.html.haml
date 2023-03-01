@@ -4,6 +4,6 @@
 %br
 = link_to t('.edit'), edit_user_path(@user)
 |
-= link_to t('.delete'), user_path(@user), data: { confirm: t('.confirm_delete') }, :method => :delete
+= link_to t('.delete'), user_path(@user), data: { turbo_method: :delete, turbo_confirm: t('.confirm_delete') }
 |
 =link_to t('.back'), users_path

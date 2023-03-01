@@ -34,6 +34,6 @@
 
 = link_to t('.edit'), edit_supplier_path(@supplier)
 |
-= link_to t('.delete'), supplier_path(@supplier), data: { confirm: t('.confirm_delete') }, :method => :delete
+= link_to t('.delete'), supplier_path(@supplier), data: { turbo_method: :delete, turbo_confirm: t('.confirm_delete') }
 |
 = link_to t('.back'), suppliers_path

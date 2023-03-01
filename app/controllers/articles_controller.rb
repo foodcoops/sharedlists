@@ -141,7 +141,7 @@ class ArticlesController < ApplicationController
   def destroy_all
     Article.where(supplier_id: @supplier.id).delete_all
     flash[:notice] = "Alle Artikel wurden gelöscht"
-    redirect_to supplier_articles_url(@supplier)
+    redirect_to supplier_articles_url(@supplier), status: :see_other
   end
 
   private
