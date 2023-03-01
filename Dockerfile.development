@@ -3,7 +3,7 @@ FROM ruby:2.7.7
 RUN echo 'gem: --no-document' >> ~/.gemrc && \
     bundle config build.nokogiri "--use-system-libraries"
 
-RUN adduser --disabled-login --uid 1000 --home /usr/src/app --shell /bin/bash app
+RUN adduser --disabled-login --uid 1000 --home /usr/src/app --shell /bin/bash --gecos "" app
 WORKDIR /usr/src/app
 USER app
 
