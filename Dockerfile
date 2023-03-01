@@ -1,4 +1,4 @@
-FROM ruby:2.7
+FROM ruby:2.7.7
 
 RUN supercronicUrl=https://github.com/aptible/supercronic/releases/download/v0.2.1/supercronic-linux-amd64 && \
     supercronicBin=/usr/local/bin/supercronic && \
