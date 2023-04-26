@@ -46,7 +46,7 @@ gem 'base32'
 gem 'sd_notify'
 gem 'net-http'
 gem 'net-ftp'
-gem 'bootstrap', '~> 5.1.3'
+gem 'bootstrap', '~> 5.2.3'
 gem 'jquery-rails'
 
 gem "hotwire-rails", "~> 0.1.3"
