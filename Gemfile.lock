@@ -272,7 +272,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    whenever (0.11.0)
+    whenever (1.0.0)
       chronic (>= 0.6.3)
     will_paginate (3.3.1)
     will_paginate-bootstrap-style (0.2.4)
@@ -315,7 +315,7 @@ DEPENDENCIES
   tzinfo-data
   web-console (>= 4.1.0)
   webdrivers
-  whenever (~> 0.9)
+  whenever (~> 1.0)
   will_paginate (~> 3.0)
   will_paginate-bootstrap-style
 
