@@ -52,18 +52,21 @@ de:
       user: Nutzer
   articles:
     index:
+      add_article: Artikel hinzufügen
+      back: Zurück
       confirm_delete: Sind Sie sicher?
       confirm_delete_all: Sollen alle Artikel gelöscht werden?
+      delete_all: Alle Artikel löschen
+      reset_filter: Filter zurücksetzen
       search: Suche
       title: Artikel von
+      upload_article: Artikel hochladen
     show:
       confirm_delete: Sind Sie sicher?
     upload:
       note: Bitte wählen Sie eine Datei zum Hochladen aus
       upload_article: Hochladen von Artikel für
       upload_article_btn: Artikel hochladen
-    verify_upload:
-      
   sessions:
     new:
       login: Anmeldung
@@ -76,7 +79,13 @@ de:
     show:
       confirm_delete: Sind Sie sicher?
   users:
+    create:
+      create_error: Etwas ging schief. Bitte stelle sicher, dass deine Passworte übereinstimmen.
+    form:
+      back: Zurück
     index:
+      add_account: Konto hinzufügen
+      edit: Bearbeiten
       name: Name
     show:
       confirm_delete: Sind Sie sicher?

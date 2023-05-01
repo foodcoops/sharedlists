@@ -52,10 +52,15 @@ en:
       user: User
   articles:
     index:
+      add_article: Add article
+      back: Back
       confirm_delete: Are you sure?
       confirm_delete_all: Are you sure to delete all articles?
+      delete_all: Delete all
+      reset_filter: Reset filter
       search: Search
       title: articles of
+      upload_article: Upload article
     show:
       confirm_delete: Are you sure?
     upload:
@@ -74,7 +79,13 @@ en:
     show:
       confirm_delete: Are you sure?
   users:
+    create:
+      create_error: Something went wrong. Please make sure your passwords match.
+    form:
+      back: Back
     index:
+      add_account: Add account
+      edit: Edit
       name: Name
     show:
       confirm_delete: Are you sure?
