@@ -47,7 +47,7 @@ module ArticleImport::Bnn
   def self.parse(file, **opts)
     encoding = opts[:encoding] || OPTIONS[:encoding]
     col_sep = opts[:col_sep] || OPTIONS[:col_sep]
-    CSV.foreach(file, {col_sep: col_sep, encoding: encoding, headers: true}) do |row|
+    CSV.foreach(file, **{col_sep: col_sep, encoding: encoding, headers: true}) do |row|
       # check if the line is empty
       unless row[0] == "" || row[0].nil?
         article = {

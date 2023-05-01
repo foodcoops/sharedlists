@@ -23,7 +23,7 @@ module ArticleImport::Borkenstein
 
     file.set_encoding(opts[:encoding] || OPTIONS[:encoding])
     col_sep = opts[:col_sep] || OPTIONS[:col_sep]
-    CSV.new(file, {col_sep: col_sep, :headers => false}).each do |row|
+    CSV.new(file, **{col_sep: col_sep, :headers => false}).each do |row|
 
       # Set manufacturer
       if row[1] == "-"
