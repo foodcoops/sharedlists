@@ -10,7 +10,7 @@ module FtpSync
     new_files = Array.new
 
     # change local dir to save files correctly
-    FileUtils.mkdir_p(supplier.ftp_path) unless File.exists?(supplier.ftp_path)
+    FileUtils.mkdir_p(supplier.ftp_path) unless File.exist?(supplier.ftp_path)
     Dir.chdir(supplier.ftp_path)
 
     # connect to ftp-server
