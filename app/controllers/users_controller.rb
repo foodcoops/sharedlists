@@ -12,7 +12,8 @@ class UsersController < ApplicationController
       flash[:notice] = "Konto wurde erfolgreich erstellt."
       redirect_to @user
     else
-      render :new
+      flash[:error] = t('.create_error')
+      redirect_back(fallback_location: root_path)
     end
   end
 
