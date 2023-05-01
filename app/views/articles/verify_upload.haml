@@ -1,4 +1,4 @@
-%h1 hochgeladenen Artikel überprüfen
+%h1= ('verify_upload')
 %p
   %i 
     Bitte überprüfe die Daten aus der Datei und wähle unten den Lieferanten aus.
@@ -8,19 +8,19 @@
 = form_tag(:action => 'createArticlesFromFile') do
   %table.list
     %tr
-      %th Änderungsk.
-      %th Name
-      %th Nummer
-      %th Notiz
-      %th Hersteller
-      %th Herkunft
-      %th Einheit
-      %th Preis
-      %th MwSt.
-      %th Pfand
-      %th Geb.Gr.
-      %th RabattMeng.
-      %th RabattPreis
+      %th= t('.changing')
+      %th= t('.name')
+      %th= t('.number')
+      %th= t('.note')
+      %th= t('.manufacturer')
+      %th= t('.origin')
+      %th= t('.quantity')
+      %th= t('.price')
+      %th= t('.tax')
+      %th= t('.deposit')
+      %th= t('.unit_quantity')
+      %th= t('scale_quantity')
+      %th= t('scale_price')
     - for @article in @articles      
       %tr
         %td= text_field 'article[]', 'changing', :size => 3
@@ -39,7 +39,7 @@
   %p
     Lieferanten auswählen: 
     = select('supplier', 'id', Supplier.all.collect {|s| [ s.name, s.id ] }, :selected => nil)
-    = submit_tag 'Artikel speichern'
+    = submit_tag t('.save')
   %p
-  = link_to 'zurück', :action => 'uploadArticles'
+  = link_to t('.back'), :action => 'uploadArticles'
       
