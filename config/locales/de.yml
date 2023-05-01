@@ -62,6 +62,8 @@ de:
       note: Bitte wählen Sie eine Datei zum Hochladen aus
       upload_article: Hochladen von Artikel für
       upload_article_btn: Artikel hochladen
+    verify_upload:
+      
   sessions:
     new:
       login: Anmeldung
