@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.6'
+ruby '3.2.2'
 
 gem 'rails', '~> 7.0'
 gem 'rails-i18n', '~> 7.0'
@@ -46,8 +46,6 @@ gem 'whenever', '~> 1.0', require: false
 gem 'mysql2', '>=0.5'
 gem 'base32'
 gem 'sd_notify'
-gem 'net-http'
-gem 'net-ftp'
 gem 'bootstrap', '~> 5.2.3'
 gem 'jquery-rails'
 

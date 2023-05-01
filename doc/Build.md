@@ -19,7 +19,7 @@ This document describes how to setup Sharedlists  within your local system. If y
     ```
 2. Install and setup rbenv and Bundler. For Debian/Ubuntu:
     ```
-    sudo apt install rbenv
+    sudo apt install rbenv libyaml-dev
     ```
      
     For other distributions have a look at the rbenv [documentation](https://github.com/rbenv/rbenv).
