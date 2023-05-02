@@ -133,7 +133,7 @@ class ArticlesController < ApplicationController
       end
     rescue => error
       flash[:error] = "Fehler beim hochladen der Artikel: #{error.message}"
-      redirect_to upload_supplier_articles_url(@supplier)
+      redirect_to supplier_articles_url(@supplier)
     end
   end
 
