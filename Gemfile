@@ -45,7 +45,6 @@ gem 'will_paginate-bootstrap-style'
 gem 'whenever', '~> 1.0', require: false
 gem 'mysql2', '>=0.5'
 gem 'base32'
-gem 'sd_notify'
 gem 'net-ftp'
 gem 'bootstrap', '~> 5.2.3'
 gem 'jquery-rails'

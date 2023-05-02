@@ -226,7 +226,6 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sd_notify (0.1.1)
     selenium-webdriver (4.9.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -309,7 +308,6 @@ DEPENDENCIES
   rails-i18n (~> 7.0)
   roo
   roo-xls
-  sd_notify
   selenium-webdriver
   simple_form
   spring
