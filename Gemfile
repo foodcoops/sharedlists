@@ -39,7 +39,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'roo'
 gem 'roo-xls'
 gem 'simple_form'
-gem 'midi-smtp-server', '~> 3.0', require: false
+gem 'midi-smtp-server', '~> 3.1', require: false
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap-style'
 gem 'whenever', '~> 1.0', require: false
