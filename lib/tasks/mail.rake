@@ -64,7 +64,7 @@ class ReplyEmailSmtpServer < MidiSmtpServer::Smtpd
     filename = nil
     message.attachments.each do |part|
       # @todo perhaps get heuristic from article import filters?
-      if part.filename.match(/\.(csv|ods|sxc|tsv|xls|xlsx|tsv|xml|zip)$/i)
+      if part.filename.match(/\.(csv|ods|sxc|tsv|xls|xlsx|xml|zip)$/i)
         FileUtils.mkdir_p(@supplier.mail_path)
         filename = "#{message.date.strftime '%Y%m%d'}_#{part.filename.gsub(/[^-a-z0-9_\.]+/i, '_')}"
         filename = @supplier.mail_path.join(filename)
