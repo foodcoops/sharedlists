@@ -9,6 +9,7 @@ This app is used in conjunction with [foodsoft](https://github.com/foodcoops/foo
 ## Setup
 
 There are mutliple way how to setup Sharedlists:
+- [Ansible role](https://github.com/foodcoops/ansible-role-sharedlists)
 - [Docker](doc/Docker.md) based
 - [Build](doc/Build.md) it yourself
 
