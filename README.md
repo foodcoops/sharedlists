@@ -1,7 +1,7 @@
 Sharedlists
 ===========
 
-[![Docker Status](https://img.shields.io/docker/build/foodcoops/sharedlists.svg)](https://hub.docker.com/r/foodcoops/sharedlists)
+[![Docker Status](https://img.shields.io/docker/cloud/build/foodcoops/sharedlists)](https://hub.docker.com/r/foodcoops/sharedlists)
 
 Sharedlists is a simple [Rails](https://rubyonrails.org/) driven database for managing multiple product lists of various suppliers.
 
