@@ -1,4 +1,4 @@
-FROM ruby:2.7.7
+FROM ruby:3.2.2
 
 RUN supercronicUrl=https://github.com/aptible/supercronic/releases/download/v0.2.1/supercronic-linux-amd64 && \
     supercronicBin=/usr/local/bin/supercronic && \
@@ -20,7 +20,6 @@ COPY . ./
 RUN echo 'gem: --no-document' >> ~/.gemrc && \
     bundle config build.nokogiri "--use-system-libraries" && \
     bundle install --deployment --without development test -j 4 && \
-    yarn && \
     rm -Rf /var/lib/apt/lists/* /var/cache/apt/* ~/.gemrc ~/.bundle && \
     \
     echo "production:\n  url: <%= ENV['DATABASE_URL'] %>" >config/database.yml && \

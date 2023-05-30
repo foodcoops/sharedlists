@@ -20,13 +20,17 @@ Setup Sharedlists with Docker
 
 ## Production Setup
 
-1.  Either fetch the image, or build it:
+1.  Either fetch the image via:
     ```
     docker pull sharedlists:latest
     ```
-    or
+    or build it by yourself:
     ```
-    docker build --tag sharedlists:latest --rm
+    git clone https://github.com/foodcoops/sharedlists.git sharedlists
+
+    cd sharedlists
+
+    docker build . --tag sharedlists:latest --rm
     ```
 1. Then set environment variables `SECRET_KEY_BASE` and `DATABASE_URL` and run:
     ```
