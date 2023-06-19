@@ -40,7 +40,7 @@ gem 'roo'
 gem 'roo-xls'
 gem 'simple_form'
 gem 'midi-smtp-server', '~> 3.1', require: false
-gem 'will_paginate', '~> 3.0'
+gem 'will_paginate', '~> 4.0'
 gem 'will_paginate-bootstrap-style'
 gem 'whenever', '~> 1.0', require: false
 gem 'mysql2', '>=0.5'
