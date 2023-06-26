@@ -35,7 +35,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'haml-rails', '~> 2.0'
-gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.19'
 gem 'roo'
 gem 'roo-xls'
 gem 'simple_form'

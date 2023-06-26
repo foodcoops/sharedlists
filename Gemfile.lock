@@ -71,7 +71,7 @@ GEM
     autoprefixer-rails (10.4.13.0)
       execjs (~> 2)
     base32 (0.3.4)
-    bcrypt (3.1.18)
+    bcrypt (3.1.19)
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
@@ -287,7 +287,7 @@ PLATFORMS
 
 DEPENDENCIES
   base32
-  bcrypt (~> 3.1.7)
+  bcrypt (~> 3.1.19)
   bootsnap (>= 1.4.4)
   bootstrap (~> 5.2.3)
   brakeman
