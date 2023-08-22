@@ -142,7 +142,7 @@ GEM
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
-    midi-smtp-server (3.1.2)
+    midi-smtp-server (3.2.1)
     mini_mime (1.1.5)
     mini_portile2 (2.8.4)
     minitest (5.19.0)
@@ -301,7 +301,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   jquery-rails
   listen (~> 3.3)
-  midi-smtp-server (~> 3.1)
+  midi-smtp-server (~> 3.2)
   mysql2 (>= 0.5)
   net-ftp
   puma (~> 6.3)
