@@ -7,7 +7,7 @@
     = csrf_meta_tag
     = javascript_importmap_tags
     = javascript_include_tag "application_legacy"
-  %body
+  %body{data: {turbo: :false}}
     %nav{:class => "navbar navbar-expand-lg navbar-light bg-light"}
       .container-fluid
         .navbar-brand
