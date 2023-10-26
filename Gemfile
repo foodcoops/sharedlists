@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.2'
 
-gem 'rails', '~> 7.0'
+gem 'rails', '~> 7.1'
 gem 'rails-i18n', '~> 7.0'
 gem 'importmap-rails', '~> 1.2'
 gem 'jbuilder', '~> 2.7'
