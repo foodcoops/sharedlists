@@ -81,7 +81,7 @@ GEM
       execjs (~> 2)
     base32 (0.3.4)
     base64 (0.2.0)
-    bcrypt (3.1.19)
+    bcrypt (3.1.20)
     bigdecimal (3.1.4)
     bindex (0.8.1)
     bootsnap (1.17.0)
@@ -306,7 +306,7 @@ PLATFORMS
 
 DEPENDENCIES
   base32
-  bcrypt (~> 3.1.19)
+  bcrypt (~> 3.1.20)
   bootsnap (>= 1.4.4)
   bootstrap (~> 5.3.2)
   brakeman
