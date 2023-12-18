@@ -166,7 +166,7 @@ GEM
     msgpack (1.7.2)
     mutex_m (0.2.0)
     mysql2 (0.5.5)
-    net-ftp (0.2.0)
+    net-ftp (0.3.3)
       net-protocol
       time
     net-imap (0.4.4)
@@ -269,7 +269,7 @@ GEM
     temple (0.10.2)
     thor (1.3.0)
     tilt (2.3.0)
-    time (0.2.2)
+    time (0.3.0)
       date
     timeout (0.4.1)
     turbo-rails (1.4.0)
