@@ -111,7 +111,8 @@ class SuppliersController < ApplicationController
         :mail_sync,
         :mail_type,
         :mail_from,
-        :mail_subject
+        :mail_subject,
+        :foodcoop
       )
   end
 end

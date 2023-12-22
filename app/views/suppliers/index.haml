@@ -8,6 +8,7 @@
     %th= t('.address')
     %th= t('.phone')
     %th= t('.delivery_days')
+    %th= t('.foodcoop')
     %th= t('.note')
     %th= t('.last update')
     %th= t('.article')
@@ -17,6 +18,7 @@
       %td= supplier.address
       %td= supplier.phone
       %td= supplier.delivery_days
+      %td= supplier.foodcoop
       %td= supplier.note
       %td= I18n.l supplier.articles_updated_at rescue nil
       %td= link_to supplier.articles.size.to_s + ' ' + t('.articles'), supplier_articles_url(supplier)
