@@ -4,7 +4,7 @@
 %p
   %i= t('.note')
 #uploadArticles.uploadForm
-  = form_for(:articles, :url => {:controller => 'articles', :action => 'parse'}, :html => { :multipart => true }) do |form|
+  = form_for(:articles, data: {turbo: false}, :url => {:controller => 'articles', :action => 'parse'}, :html => { :multipart => true }) do |form|
     %p
       #{t('.upload')}:
       = form.file_field("file")
