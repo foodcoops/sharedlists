@@ -38,6 +38,7 @@ en:
         phone: Phone
         phone2: Phone 2
         url: Website
+        foodcoop: Foodcoop
       user:
         email: Email
         first_name: First name
@@ -73,6 +74,7 @@ en:
   suppliers:
     form:
       ftp_regexp_hint: "Must fit to file format. Example: \\A(?:[.]/)?PL.{0,6}[.]BNN\\z for bnn, \\A(?:[.]/)?.+[.]csv\\z for foodsoft."
+      foodcoop_help_text: "Optional: restrict to a foodcoop, needs to be a foodcoop config name in foodsoft"
     index:
       add_supplier: Add supplier
       articles: Articles

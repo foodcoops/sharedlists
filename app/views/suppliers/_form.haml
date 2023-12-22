@@ -11,6 +11,10 @@
   = f.input :note, as: :text, input_html: {rows: 5, cols: 60}
   /= f.input :min_order_quantity
   /= f.input :article_info_url
+  %div
+    = f.input :foodcoop
+    %p
+      #{t('.foodcoop_help_text')}
 
   = f.input :ftp_sync
   %div#ftp_details{style: ('display: none' unless @supplier.ftp_sync?)}
