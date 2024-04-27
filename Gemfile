@@ -5,7 +5,7 @@ ruby '3.2.2'
 
 gem 'rails', '~> 7.1'
 gem 'rails-i18n', '~> 7.0'
-gem 'importmap-rails', '~> 1.2'
+gem 'importmap-rails', '~> 2.0'
 gem 'sassc-rails'
 gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
