@@ -18,7 +18,7 @@ end
 group :development do
   gem 'web-console', '>= 4.1.0'
   gem 'rack-mini-profiler', '~> 3.3'
-  gem 'listen', '~> 3.3'
+  gem 'listen', '~> 3.9'
   gem 'spring'
   gem 'sqlite3', '~> 1.7'
 end
