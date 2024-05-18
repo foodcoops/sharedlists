@@ -13,8 +13,9 @@ public/uploads
 supplier_assets/**
 vendor/bundle
 
-# no configuration
-config/*.yml
+# configuration
+config/master.key
+config/database.yml
 
 # IDEs, Developer tools
 .idea
