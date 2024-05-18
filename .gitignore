@@ -1,5 +1,6 @@
 .bundle
 .rake_tasks*
+.env
 db/*.sqlite3
 log
 node_modules
