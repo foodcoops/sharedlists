@@ -7,12 +7,12 @@ Setup Sharedlists with Docker
 
 1. Copy `config/database.yml.SAMPLE` to `config/database.yml` and run:
     ```
-    docker-compose run --rm app bundle
-    docker-compose run --rm app rails db:setup
+    docker-compose -f docker-compose-dev.yml run --rm app bundle
+    docker-compose -f docker-compose-dev.yml run --rm app rails db:setup
     ```
 1. Run `docker-compose`:
    ```
-   docker-compose up
+   docker-compose -f docker-compose-dev.yml up
    ```
 1. Open your favorite browser and open the web browser at http://localhost:3000/
 1. Login using the default credentials: `admin@example.com/secret`
@@ -20,29 +20,14 @@ Setup Sharedlists with Docker
 
 ## Production Setup
 
-1.  Either fetch the image via:
+1.  Create an `.env` file and define some variables:
     ```
-    docker pull sharedlists:latest
+    SHAREDLISTS_DB_PASSWORD=
+    SHAREDLISTS_SECRET_KEY_BASE=
+    MAILER_DOMAIN=
+    MARIADB_ROOT_PASSWORD=
     ```
-    or build it by yourself:
+1. Run `docker-compose`:
     ```
-    git clone https://github.com/foodcoops/sharedlists.git sharedlists
-
-    cd sharedlists
-
-    docker build . --tag sharedlists:latest --rm
+    docker-compose up -d
     ```
-1. Then set environment variables `SECRET_KEY_BASE` and `DATABASE_URL` and run:
-    ```
-    docker run --name sharedlists_web \
-      -e SECRET_KEY_BASE -e DATABASE_URL -e RAILS_FORCE_SSL=false \
-      sharedlists:latest
-    ```
-1. To run cronjobs, start another instance:
-   ```
-    docker run --name sharedlists_cron \
-      -e SECRET_KEY_BASE -e DATABASE_URL \
-      sharedlists:latest  ./proc-start cron
-    ```
-1. If you want to process incoming mails, add another instance like the previous,
-substituting `mail` for `cron`.

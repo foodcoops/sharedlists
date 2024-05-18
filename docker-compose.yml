@@ -1,24 +1,63 @@
-version: "2"
+version: '3'
+services:
+  mariadb:
+    container_name: sharedlists-db
+    image: mariadb:10.11
+    restart: always
+    healthcheck:
+      test: [ "CMD", "healthcheck.sh", "--su-mysql", "--connect", "--innodb_initialized" ]
+      interval: 30s
+      retries: 3
+      timeout: 30s
+    environment:
+      - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
+      - MARIADB_USER=sharedlists
+      - MARIADB_PASSWORD=${SHAREDLISTS_DB_PASSWORD}
+      - MARIADB_DATABASE=sharedlistsdb
+    volumes:
+      - mariadb:/var/lib/mysql
+
+  sharedlists:
+    container_name: sharedlists-app
+    image: foodcoops/sharedlists:${SHAREDLISTS_VERSION:-latest}
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 1m
+      retries: 3
+      timeout: 10s
+    environment:
+      - DATABASE_URL=mysql2://sharedlists:${SHAREDLISTS_DB_PASSWORD}@mariadb/sharedlistsdb?encoding=utf8mb4
+      - SECRET_KEY_BASE=${SHAREDLISTS_SECRET_KEY_BASE}
+      - MAILER_DOMAIN=${MAILER_DOMAIN}
+      - MAILER_PREFIX=${MAILER_PREFIX:-sharedlists+}
+    volumes:
+      - supplier_assets:/usr/src/app/supplier_assets
+    ports:
+      - ${SHAREDLISTS_PORT:-3000}:3000
+    depends_on:
+      mariadb:
+        condition: service_healthy
+
+  sharedlists_cron:
+    container_name: sharedlists-cron
+    image: foodcoops/sharedlists:${SHAREDLISTS_VERSION:-latest}
+    restart: always
+    environment:
+      - SECRET_KEY_BASE=${SHAREDLISTS_SECRET_KEY_BASE}
+    command: ./proc-start cron
+
+  sharedlists_smtp:
+    container_name: sharedlists-smtp
+    image: foodcoops/sharedlists:${SHAREDLISTS_VERSION:-latest}
+    environment:
+      - SECRET_KEY_BASE=${SHAREDLISTS_SECRET_KEY_BASE}
+      - SMTP_SERVER_PORT=2525
+      - SMTP_SERVER_HOST=0.0.0.0
+    ports:
+      - ${SHAREDLISTS_SMTP_SERVER_PORT:-2525}:2525
+    command: ./proc-start mail
 
 volumes:
-  mysql:
-
-services:
-  app:
-    build:
-      context: ./
-      dockerfile: Dockerfile.development
-    command: ./proc-start web
-    volumes:
-      - ./:/usr/src/app
-    ports:
-      - 3000:3000
-    depends_on:
-      - mysql
-
-  mysql:
-    image: mariadb:10.1
-    volumes:
-      - mysql:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: secret
+  mariadb:
+  supplier_assets:
