@@ -21,6 +21,9 @@ group :development do
   gem 'listen', '~> 3.9'
   gem 'spring'
   gem 'sqlite3', '~> 1.7'
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
 end
 
 group :test do
