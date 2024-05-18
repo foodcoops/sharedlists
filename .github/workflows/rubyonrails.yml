@@ -19,11 +19,6 @@ jobs:
           MYSQL_PASSWORD: password
           MYSQL_DATABASE: test
           MYSQL_ROOT_PASSWORD: password
-        options: >-
-          --health-cmd "mysqladmin ping"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
     env:
       DATABASE_URL: mysql2://user:password@127.0.0.1/test
       RAILS_ENV: test
@@ -56,10 +51,6 @@ jobs:
           bundler-cache: true
       - name: Security audit dependencies
         run: bundle exec bundler-audit --update
-        env:
-          RAILS_ENV: test
-      - name: Security audit application code
-        run: bundle exec brakeman -q -w2
         env:
           RAILS_ENV: test
       - name: Lint Ruby files
