@@ -15,7 +15,7 @@ There are mutliple way how to setup Sharedlists:
 - [Docker](doc/Docker.md) based
 - [Build](doc/Build.md) it yourself
 
-Login with username *admin* and password *secret* after installation.
+Login with username *admin@example.com* and password *secret* after installation.
 
 
 ## Connecting Foodsoft
