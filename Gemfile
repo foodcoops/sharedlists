@@ -5,7 +5,7 @@ ruby '3.2.2'
 
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'importmap-rails', '~> 2.0'
-gem 'jbuilder', '~> 2.7'
+gem 'jbuilder', '~> 2.12'
 gem 'puma', '~> 6.4'
 gem 'rails', '~> 7.1'
 gem 'rails-i18n', '~> 7.0'
