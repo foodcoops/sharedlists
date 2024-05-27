@@ -22,7 +22,7 @@ group :development do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
   gem 'spring'
-  gem 'sqlite3', '~> 1.7'
+  gem 'sqlite3', '~> 2.0'
   gem 'web-console', '>= 4.1.0'
 end
 
