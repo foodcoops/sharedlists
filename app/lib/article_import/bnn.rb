@@ -63,7 +63,7 @@ module ArticleImport::Bnn
             :unit_quantity => row[22]
         }
         # TODO: Complete deposit list....
-        article.merge!(:deposit => self.translate(:deposit, row[26])) if self.translate(:deposit, row[26])
+        article.merge!(:deposit => self.translate(:deposit, row[27])) if self.translate(:deposit, row[27])
 
         # get scale prices if exists
         article.merge!(:scale_quantity => row[40], :scale_price => row[41]) unless row[40].nil? or row[41].nil?
